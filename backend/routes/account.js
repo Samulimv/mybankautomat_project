@@ -5,16 +5,62 @@ const account=require('../models/account_model');
 router.get('/',function(request, response){
     account.getAllAccount(function(err, result){
         if(err){
-            response.send(err);
+            response.json(err);
         }
         else{
-            response.send(result);
-            console.log(result);
+            response.json(result);
         }
+    })
+});
 
+router.get('/:id',
+function(request, response){
+    account.getById(request.params.id, function(err, result){
+        if(err){
+            response.json(err);
+        }
+        else{
+            response.json(result);
+        }
+    })
+});
+
+router.post('/',
+function(request,response) {
+    account.add(request.body, function(err, result){
+        if(err){
+            response.json(err);
+        }
+        else{
+            response.json(result);
+        }
     });
+});
 
+router.delete('/:id',
+function(request, response){
+    account.delete(request.params.id, function(err,result){
+        if(err){
+            response.json(err);
+        }
+        else{
+            response.json(result);
+        }
+    });
+});
 
+router.put('/:id',
+function(request, response){
+    account.update(request.params.id, request.body, function(err, result){
+        if(err){
+            response.json(err);
+        }
+        else{
+           response.json(result);
+        }
+    });
 });
 
 module.exports=router;
+
+
