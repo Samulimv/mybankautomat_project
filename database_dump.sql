@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `bank` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `bank`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bank
@@ -67,14 +69,14 @@ LOCK TABLES `card` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `card-account`
+-- Table structure for table `card_account`
 --
 
-DROP TABLE IF EXISTS `card-account`;
+DROP TABLE IF EXISTS `card_account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `card-account` (
-  `id_card` int NOT NULL,
+CREATE TABLE `card_account` (
+  `id_card` int NOT NULL AUTO_INCREMENT,
   `id_account` int NOT NULL,
   PRIMARY KEY (`id_card`,`id_account`),
   KEY `'''_idx` (`id_account`),
@@ -84,12 +86,12 @@ CREATE TABLE `card-account` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `card-account`
+-- Dumping data for table `card_account`
 --
 
-LOCK TABLES `card-account` WRITE;
-/*!40000 ALTER TABLE `card-account` DISABLE KEYS */;
-/*!40000 ALTER TABLE `card-account` ENABLE KEYS */;
+LOCK TABLES `card_account` WRITE;
+/*!40000 ALTER TABLE `card_account` DISABLE KEYS */;
+/*!40000 ALTER TABLE `card_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -128,7 +130,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id_user` int NOT NULL,
+  `id_user` int NOT NULL AUTO_INCREMENT,
   `fname` varchar(45) DEFAULT NULL,
   `lname` varchar(45) DEFAULT NULL,
   `id_account` int DEFAULT NULL,
@@ -155,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-20 14:39:15
+-- Dump completed on 2024-03-29 14:55:07
