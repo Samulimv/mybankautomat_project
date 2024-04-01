@@ -1,7 +1,7 @@
 const db=require('../database');
 
 const account={
-    getAllAccount(callback){
+    getAll(callback){
         return db.query('SELECT * FROM account', callback);
  
     },
