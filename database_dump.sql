@@ -1,6 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `bank` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `bank`;
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bank
 -- ------------------------------------------------------
@@ -56,7 +54,7 @@ CREATE TABLE `card` (
   `pin` varchar(255) DEFAULT NULL,
   `cardNumber` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_card`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,6 +63,7 @@ CREATE TABLE `card` (
 
 LOCK TABLES `card` WRITE;
 /*!40000 ALTER TABLE `card` DISABLE KEYS */;
+INSERT INTO `card` VALUES (1,'$2a$10$CedplSXg7SHY7K9mTA5Aye6u/CPtMhM5Z7rC/dGk7Y/3gGppDUpQi','1111-2222-2222-1111'),(3,'$2a$10$EwfWMw24RpMHwGdg86BX.uPCVjsUqldAuSh2rRKiV58gdfnlo8Fqi','1111-1111-2222-2222'),(4,'$2a$10$SbIJndXIUMHVmMnjot0Ute7HVGgMAHAPwlUbUhceyEuxWFvx77OiS','1111-2222-2222-3333'),(5,'$2a$10$LXkhorfY9FibPfi5oB1m7.b7e4IyOFBtry6hO9kWF1iMhoivWlzxW','1111-2222-2222-9876'),(6,'$2a$10$7sucl.Y5caf7JliYVZ123eBEK9mRQa8aPFzOj0qqhAmvx/ypxEAWO','1111-2222-2222-9879'),(7,'$2a$10$L4ev3ZqezD84rsJRu98HzuLPJOZkXsJ84FHyO4Col7RflN7TfBuem','1111-1111-2222-0000');
 /*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,7 +75,7 @@ DROP TABLE IF EXISTS `card_account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `card_account` (
-  `id_card` int NOT NULL AUTO_INCREMENT,
+  `id_card` int NOT NULL,
   `id_account` int NOT NULL,
   PRIMARY KEY (`id_card`,`id_account`),
   KEY `'''_idx` (`id_account`),
@@ -130,11 +129,9 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id_user` int NOT NULL AUTO_INCREMENT,
+  `id_user` int NOT NULL,
   `fname` varchar(45) DEFAULT NULL,
   `lname` varchar(45) DEFAULT NULL,
-  `id_account` int DEFAULT NULL,
-  `id_card` int DEFAULT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -157,4 +154,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-29 14:55:07
+-- Dump completed on 2024-04-02 10:54:07
