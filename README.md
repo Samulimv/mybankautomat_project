@@ -1,2 +1,2 @@
 # SPO_Group15
-<img src="ER-kaavio.png">
+<img src="ER_kaavio.png">
