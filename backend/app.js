@@ -3,16 +3,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-<<<<<<< HEAD
-=======
 
 var userRouter = require('./routes/user');
 var accountRouter = require('./routes/account');
 var card_accountRouter = require('./routes/card_account');
 var cardRouter = require('./routes/card');
->>>>>>> main
 
-var userRouter = require('./routes/user');
+
 var transactionRouter = require('./routes/transactions');
 var app = express();
 
