@@ -1,7 +1,12 @@
-const mysql=require("mysql2");
+const mysql = require('../backend/node_modules/mysql2');
+const connection = mysql.createPool({
+  host: '127.0.0.1',
+  user: 'bankuser',
+  password: 'bankpass',
+  database: 'bank'
+});
+module.exports = connection;
 
-const conn="mysql://bankuser:bankpass@127.0.0.1:3306/bank";
 
-const connection=mysql.createPool(conn);
 
-module.exports=connection;
+
