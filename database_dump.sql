@@ -32,7 +32,7 @@ CREATE TABLE `account` (
   PRIMARY KEY (`id_account`),
   KEY `user-account_idx` (`id_user`),
   CONSTRAINT `user-account` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES (1,'123',111.00,NULL),(2,'321',123.00,NULL);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +132,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id_user` int NOT NULL,
+  `id_user` int NOT NULL AUTO_INCREMENT,
   `fname` varchar(45) DEFAULT NULL,
   `lname` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
@@ -156,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-02 12:21:18
+-- Dump completed on 2024-04-03 14:43:55
