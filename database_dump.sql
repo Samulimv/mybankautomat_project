@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `bank` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `bank`;
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bank
 -- ------------------------------------------------------
@@ -56,7 +56,7 @@ CREATE TABLE `card` (
   `pin` varchar(255) DEFAULT NULL,
   `cardNumber` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_card`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,6 +65,7 @@ CREATE TABLE `card` (
 
 LOCK TABLES `card` WRITE;
 /*!40000 ALTER TABLE `card` DISABLE KEYS */;
+INSERT INTO `card` VALUES (1,'$2a$10$NUraNcOopsEVgXqQ8ATiPOkwhtbRf.RTsii/IEHJ5iElD568av456','06000640D7'),(2,'$2a$10$OqXyuLOn4VnmS00zUKeYXe0RKamieaVkAfg/iM6h.8Ti28A2CU8TC','05009B101A'),(3,'$2a$10$rWSsFJ/yDJeIdKa5NEdMTuQhz0Bu31Ty4PliKiTa28Ega11gVYFBy','0600062205');
 /*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,7 +77,7 @@ DROP TABLE IF EXISTS `card_account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `card_account` (
-  `id_card` int NOT NULL AUTO_INCREMENT,
+  `id_card` int NOT NULL,
   `id_account` int NOT NULL,
   PRIMARY KEY (`id_card`,`id_account`),
   KEY `'''_idx` (`id_account`),
@@ -130,11 +131,9 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id_user` int NOT NULL AUTO_INCREMENT,
+  `id_user` int NOT NULL,
   `fname` varchar(45) DEFAULT NULL,
   `lname` varchar(45) DEFAULT NULL,
-  `id_account` int DEFAULT NULL,
-  `id_card` int DEFAULT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -157,4 +156,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-29 14:55:07
+-- Dump completed on 2024-04-02 12:21:18
