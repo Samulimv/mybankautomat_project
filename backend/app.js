@@ -8,9 +8,8 @@ var userRouter = require('./routes/user');
 var accountRouter = require('./routes/account');
 var card_accountRouter = require('./routes/card_account');
 var cardRouter = require('./routes/card');
-
-
 var transactionRouter = require('./routes/transactions');
+var loginRouter = require('./routes/login')
 var app = express();
 
 app.use(logger('dev'));
@@ -25,5 +24,6 @@ app.use('/transactions',transactionRouter);
 app.use('/account', accountRouter);
 app.use('/card_account', card_accountRouter);
 app.use('/card', cardRouter);
+app.use('/login', loginRouter);
 
 module.exports = app;
