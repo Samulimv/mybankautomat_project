@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `bank` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `bank`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: bank
+-- Host: 127.0.0.1    Database: bank
 -- ------------------------------------------------------
--- Server version	8.0.36
+-- Server version	8.2.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -93,6 +93,7 @@ CREATE TABLE `card_account` (
 
 LOCK TABLES `card_account` WRITE;
 /*!40000 ALTER TABLE `card_account` DISABLE KEYS */;
+INSERT INTO `card_account` VALUES (1,1),(2,2),(3,3);
 /*!40000 ALTER TABLE `card_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,3 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2024-04-08 23:10:23
