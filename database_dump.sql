@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `bank` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `bank`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bank
 -- ------------------------------------------------------
@@ -93,6 +93,7 @@ CREATE TABLE `card_account` (
 
 LOCK TABLES `card_account` WRITE;
 /*!40000 ALTER TABLE `card_account` DISABLE KEYS */;
+INSERT INTO `card_account` VALUES (1,1),(2,2),(3,3);
 /*!40000 ALTER TABLE `card_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
