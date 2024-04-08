@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `bank` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `bank`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bank
 -- ------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `account` (
   PRIMARY KEY (`id_account`),
   KEY `user-account_idx` (`id_user`),
   CONSTRAINT `user-account` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES (1,'321',123.00,1),(2,'12345',69.00,2),(3,'0001',1000000.00,3);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,6 +93,7 @@ CREATE TABLE `card_account` (
 
 LOCK TABLES `card_account` WRITE;
 /*!40000 ALTER TABLE `card_account` DISABLE KEYS */;
+INSERT INTO `card_account` VALUES (1,1),(2,2),(3,3);
 /*!40000 ALTER TABLE `card_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,11 +133,11 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id_user` int NOT NULL,
+  `id_user` int NOT NULL AUTO_INCREMENT,
   `fname` varchar(45) DEFAULT NULL,
   `lname` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,6 +146,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Teppo',' Testi'),(2,'Aino',' Joki'),(3,'Pekka','Rinne');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -156,4 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-02 12:21:18
+-- Dump completed on 2024-04-08 23:15:45
