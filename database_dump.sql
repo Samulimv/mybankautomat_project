@@ -41,7 +41,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'321',123.00,1),(2,'12345',69.00,2),(3,'0001',1000000.00,3);
+INSERT INTO `account` VALUES (1,'123',1.00,NULL),(2,'321',-37.00,NULL),(3,'4444',-5.00,2);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +113,7 @@ CREATE TABLE `transactions` (
   PRIMARY KEY (`id_transactions`),
   KEY `transactions-account_idx` (`id_account`),
   CONSTRAINT `transactions-account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id_account`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,6 +122,7 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+INSERT INTO `transactions` VALUES (1,1,40.00,'nosto','2024-04-12 09:25:52'),(2,2,40.00,'nosto','2024-04-12 09:40:36'),(3,2,40.00,'nosto','2024-04-12 09:42:09'),(4,2,40.00,'nosto','2024-04-12 09:42:13'),(5,1,30.00,'\'nosto\'','2024-04-12 10:08:31'),(6,3,20.00,'nosto','2024-04-12 10:40:48'),(7,3,485.00,'nosto','2024-04-12 10:41:53');
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-08 23:10:23
+-- Dump completed on 2024-04-12 10:42:59
