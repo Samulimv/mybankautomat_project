@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 
 #include <QApplication>
+#include <QtSql>
+#include <QTableView>
+
 
 int main(int argc, char *argv[])
 {
