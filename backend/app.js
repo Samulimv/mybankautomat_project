@@ -39,13 +39,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/login', loginRouter);
-
+app.use(authenticateToken);
 app.use('/user', userRouter);
+app.use(authenticateToken);
 app.use('/transactions',transactionRouter);
+app.use(authenticateToken);
 app.use('/account', accountRouter);
+app.use(authenticateToken);
 app.use('/card_account', card_accountRouter);
+app.use(authenticateToken);
 app.use('/card', cardRouter);
+app.use(authenticateToken);
 app.use('/credit',creditRouter);
+app.use(authenticateToken);
 app.use('/debit', debitRouter);
 
 module.exports = app;
