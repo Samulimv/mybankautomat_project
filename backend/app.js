@@ -4,7 +4,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const jwt = require('jsonwebtoken');
 
-
 var userRouter = require('./routes/user');
 var accountRouter = require('./routes/account');
 var card_accountRouter = require('./routes/card_account');
