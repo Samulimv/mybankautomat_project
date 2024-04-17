@@ -1,4 +1,6 @@
 QT       += core gui
+QT       += sql
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,15 +13,15 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    pin.cpp
+    transactions.cpp
 
 HEADERS += \
     mainwindow.h \
-    pin.h
+    transactions.h
 
 FORMS += \
     mainwindow.ui \
-    pin.ui
+    transactions.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
