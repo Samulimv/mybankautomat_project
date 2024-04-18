@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "transactions.h"
 #include "pin.h"
+#include "mainmenu.h"
 
 #include <QApplication>
 #include <QtSql>
@@ -13,11 +14,12 @@ int main(int argc, char *argv[])
     MainWindow w;
     transactions t;
     pin p;
+    mainmenu m;
 
-    w.show();
-    //t.show();
-   // p.show();
-
+    // w.show();
+    // t.show();
+     p.show();
+    // m.show();
 
     return a.exec();
 }
