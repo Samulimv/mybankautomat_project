@@ -41,52 +41,15 @@ void MainWindow::displayTagId(const QString &tagId)
     QString cleanedTagId = tagId;
     cleanedTagId.remove('-'); // Poistetaan viiva
 
-    // statusLabel->setText("Tag read: " + cleanedTagId); // Käytetään puhdistettua tagin ID:tä
-    fetchPasswordFromServer(cleanedTagId); // Käytetään puhdistettua tagin ID:tä
+
 
     // Kutsu openPin() -funktiota vasta kun kortti on luettu
     openPin();
 }
 
-
-
-void MainWindow::fetchPasswordFromServer(const QString &tagId)
+QString MainWindow::returnCardNumber()
 {
-    QUrl url("http://localhost:3000/card");
-    QNetworkRequest request(url);
-
-    // Lisätään Content-Type otsikko
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    // Oletetaan, että käyttäjätunnus on 'user' ja salasana on 'password'
-    QString credentials = "user:password";
-    QByteArray basicAuth = "Basic " + credentials.toLocal8Bit().toBase64();
-    request.setRawHeader("Authorization", basicAuth);
-
-    QJsonObject json;
-    json["cardNumber"] = tagId;
-
-    networkManager->post(request, QJsonDocument(json).toJson());
-}
-
-
-void MainWindow::handlePinVerified(bool success)
-{
-    if (success) {
-        // Logiikka, joka suoritetaan, jos PIN on oikein
-        qDebug() << "PIN verification successful";
-    } else {
-        // Logiikka, jos PIN on väärä
-        qDebug() << "PIN verification failed";
-    }
-}
-void MainWindow::sendDataToServer(const QJsonObject &data)
-{
-    QUrl url("http://your-backend-url.com/api/data");
-    QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    networkManager->post(request, QJsonDocument(data).toJson());
+    return cleanedTagId;
 }
 
 void MainWindow::openPin() {
@@ -99,27 +62,3 @@ void MainWindow::openPin() {
     }
 }
 
-void MainWindow::handleNetworkReply(QNetworkReply* reply)
-{
-    if (reply->error() == QNetworkReply::NoError) {
-        QByteArray response_data = reply->readAll();
-        QJsonObject obj = QJsonDocument::fromJson(response_data).object();
-        QString password = obj["password"].toString();
-
-        // Tarkistetaan, että saimme salasanan ennen PIN-dialogin avaamista.
-        if (!password.isEmpty()) {
-            // Avaa PIN-dialogi vain, jos salasana saadaan.
-            openPin();
-        } else {
-            // Käsitellään tilannetta, jossa salasanaa ei saada.
-            ui->statusLabel->setText("Tag recognized but no password provided.");
-        }
-    } else {
-        qDebug() << "Verkkovirhe:" << reply->errorString();
-        qDebug() << "Vastauksen statuskoodi:" << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-        qDebug() << "Vastauksen ruumis:" << reply->readAll();
-        // Näytetään virhe käyttöliittymässä
-        ui->statusLabel->setText("Network error: " + reply->errorString());
-    }
-    reply->deleteLater();
-}

@@ -26,17 +26,14 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void showTransactions();
     void showPinDialog();
-    void sendDataToServer(const QJsonObject &data);
-
+    static QString returnCardNumber();
 
 private slots:
     void displayTagId(const QString &tagId);
-    void fetchPasswordFromServer(const QString &tagId);
-    void handleNetworkReply(QNetworkReply* reply);
-    void handlePinVerified(bool success);
     void openPin();
+
+
 
 private:
     Ui::MainWindow *ui;
@@ -44,6 +41,8 @@ private:
     QLabel *statusLabel;
     QNetworkAccessManager *networkManager;
     pin * pinDialog;
+    QString cleanedTagId;
+
 
 };
 #endif

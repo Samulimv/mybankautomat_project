@@ -2,6 +2,9 @@
 #define PIN_H
 
 #include <QDialog>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 namespace Ui {
 class pin;
@@ -21,9 +24,14 @@ private slots:
     void cancel_clicked();
     void clear_clicked();
     void enter_clicked();
+    void loginSlot(QNetworkReply *reply);
 
 private:
     Ui::pin *ui;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+
 };
 
 #endif // PIN_H
