@@ -3,12 +3,18 @@
 
 #include "QLabel.h"
 #include <QMainWindow>
+<<<<<<< HEAD
 #include <QSerialPort>
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include "pin.h"
 
+=======
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+>>>>>>> 260d6aef8108fd1cc5db7e0573321cb19adbff30
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,8 +41,17 @@ private slots:
 
 
 
+
+private slots:
+
+
+
+    void on_btnLogin_clicked();
+    void loginSlot(QNetworkReply *reply);
+
 private:
     Ui::MainWindow *ui;
+<<<<<<< HEAD
     Rfidreader * reader;
     QLabel *statusLabel;
     QNetworkAccessManager *networkManager;
@@ -44,6 +59,11 @@ private:
     QString cleanedTagId;
 
 
+=======
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+>>>>>>> 260d6aef8108fd1cc5db7e0573321cb19adbff30
 };
 #endif
 
