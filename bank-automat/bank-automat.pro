@@ -33,6 +33,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 
+
 win32: LIBS += -L$$PWD/rfidreader/build/debug/ -lrfidreader
 
 INCLUDEPATH += $$PWD/rfidreader

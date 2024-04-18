@@ -8,7 +8,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include "pin.h"
-
+#include "rfidreader.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,7 +16,7 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
-class Rfidreader;  // Forward declaration
+class RFIDReader;  // Forward declaration
 class pin;
 
 class MainWindow : public QMainWindow
@@ -26,25 +26,23 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void showTransactions();
     void showPinDialog();
     void sendDataToServer(const QJsonObject &data);
 
 
 private slots:
     void displayTagId(const QString &tagId);
-    void fetchPasswordFromServer(const QString &tagId);
+    //void fetchPasswordFromServer(const QString &tagId);
     void handleNetworkReply(QNetworkReply* reply);
     void handlePinVerified(bool success);
     void openPin();
 
 private:
     Ui::MainWindow *ui;
-    Rfidreader * reader;
+    RFIDReader * reader;
     QLabel *statusLabel;
     QNetworkAccessManager *networkManager;
     pin * pinDialog;
 
 };
 #endif
-
