@@ -4,9 +4,9 @@
 #include <QtCore/qglobal.h>
 
 #if defined(RFIDREADER_LIBRARY)
-#define RFIDREADER_EXPORT Q_DECL_EXPORT
+#  define RFIDREADER_EXPORT Q_DECL_EXPORT
 #else
-#define RFIDREADER_EXPORT Q_DECL_IMPORT
+#  define RFIDREADER_EXPORT Q_DECL_IMPORT
 #endif
 
 #endif // RFIDREADER_GLOBAL_H
