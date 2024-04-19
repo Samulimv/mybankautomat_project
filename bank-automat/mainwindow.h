@@ -28,6 +28,7 @@ public:
     ~MainWindow();
     void showPinDialog();
     void sendDataToServer(const QJsonObject &data);
+    void request();
 
 
 private slots:

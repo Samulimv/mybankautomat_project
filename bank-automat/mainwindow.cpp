@@ -3,9 +3,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QMessageBox>
-#include <QtNetwork>
-#include <QNetworkAccessManager>
-#include <QJsonDocument>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -59,7 +57,7 @@ void MainWindow::handlePinVerified(bool success)
 }
 void MainWindow::sendDataToServer(const QJsonObject &data)
 {
-    //networkManager->post(request, QJsonDocument(data).toJson());
+    networkManager->post(request(), QJsonDocument(data).toJson());
 }
 
 void MainWindow::openPin() {

@@ -58,7 +58,7 @@ void pin::clear_clicked()
 
 void pin::enter_clicked()
 {
-    //QString pin = ui->lineEdit->text(); // Hae pin-koodi lineeditistä
+    QString pin = ui->lineEdit->text(); // Hae pin-koodi lineeditistä
     // Tässä voit toteuttaa tarvittavat toimenpiteet pin-koodin kanssa
-    //qDebug() << "Syötetty pin-koodi:" << pin;
+    qDebug() << "Syötetty pin-koodi:" << pin;
 }
