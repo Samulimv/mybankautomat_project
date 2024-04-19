@@ -2,9 +2,6 @@
 #define PIN_H
 
 #include <QDialog>
-#include "mainwindow.h"
-#include "transactions.h"
-#include "mainmenu.h"
 
 namespace Ui {
 class pin;

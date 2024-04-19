@@ -4,7 +4,8 @@
 #include <QMainWindow>
 #include <QApplication>
 #include "transactions.h"
-
+#include "rfidreader.h"
+#include "pin.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,8 +20,23 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void showPinDialog();
+    void sendDataToServer(const QJsonObject &data);
+
+
+
+private slots:
+    void displayTagId(const QString &tagId);
+    //void fetchPasswordFromServer(const QString &tagId);
+  //  void handleNetworkReply(QNetworkReply* reply);
+   // void handlePinVerified(bool success);
+    void openPin();
 
 private:
     Ui::MainWindow *ui;
+
+    RFIDReader * reader;
+    pin * pinDialog;
+
 };
 #endif // MAINWINDOW_H
