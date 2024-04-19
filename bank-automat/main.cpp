@@ -2,7 +2,7 @@
 #include "transactions.h"
 #include "pin.h"
 #include <QApplication>
-#include <QtSql>
+//#include <QtSql>
 #include <QTableView>
 
 

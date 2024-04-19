@@ -3,7 +3,6 @@
 
 #include "QLabel.h"
 #include <QMainWindow>
-#include <QSerialPort>
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
@@ -28,7 +27,7 @@ public:
     ~MainWindow();
     void showPinDialog();
     void sendDataToServer(const QJsonObject &data);
-
+     QString returnCardNumber();
 
 private slots:
     void displayTagId(const QString &tagId);
@@ -43,6 +42,7 @@ private:
     QLabel *statusLabel;
     QNetworkAccessManager *networkManager;
     pin * pinDialog;
+    QString cleanedTagId;
 
 };
 #endif
