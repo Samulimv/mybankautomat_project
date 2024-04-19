@@ -70,3 +70,5 @@ void pin::on_enter_clicked()
     mainmenu *mainmenuDialog = new mainmenu(this);
     mainmenuDialog->exec(); //sulkee ja avaa uuden menun
 }
+
+//toimiasasasafasfdasfa
