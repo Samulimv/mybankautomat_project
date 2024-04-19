@@ -29,12 +29,6 @@ public:
 
 private slots:
     void displayTagId(const QString &tagId);
-<<<<<<< HEAD
-=======
-    //void fetchPasswordFromServer(const QString &tagId);
-  //  void handleNetworkReply(QNetworkReply* reply);
-   // void handlePinVerified(bool success);
->>>>>>> main
     void openPin();
 
 private:

@@ -93,7 +93,8 @@ void pin::loginSlot(QNetworkReply *reply)
     else{
         if(response_data!="false"){
             //kirjautuminen onnistui
-
+            mainmenu m;
+            m.show();
 
 
         }
