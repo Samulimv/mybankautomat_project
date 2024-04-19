@@ -16,10 +16,10 @@ int main(int argc, char *argv[])
     pin p;
     mainmenu m;
 
-    // w.show();
-    // t.show();
-     p.show();
-    // m.show();
+     w.show();
+     //t.show();
+     //p.show();
+     //m.show();
 
     return a.exec();
 }

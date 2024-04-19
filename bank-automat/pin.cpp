@@ -5,7 +5,7 @@
 #include <QApplication>
 #include <ostream>
 #include <iostream>
-
+#include "mainmenu.h"
 pin::pin(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::pin)
