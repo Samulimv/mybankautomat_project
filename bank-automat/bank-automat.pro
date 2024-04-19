@@ -1,7 +1,7 @@
 QT       += core gui
 QT       += sql
 QT       += network
-QT       += serialport
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -12,17 +12,26 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
+    mainmenu.cpp \
     mainwindow.cpp \
+    muusumma.cpp \
+    otto.cpp \
     pin.cpp \
     transactions.cpp
 
 HEADERS += \
+    mainmenu.h \
     mainwindow.h \
+    muusumma.h \
+    otto.h \
     pin.h \
     transactions.h
 
 FORMS += \
+    mainmenu.ui \
     mainwindow.ui \
+    muusumma.ui \
+    otto.ui \
     pin.ui \
     transactions.ui
 
@@ -30,11 +39,3 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-
-
-
-win32: LIBS += -L$$PWD/rfidreader/build/debug/ -lrfidreader
-
-INCLUDEPATH += $$PWD/rfidreader
-DEPENDPATH += $$PWD/rfidreader

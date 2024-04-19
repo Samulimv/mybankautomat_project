@@ -2,6 +2,9 @@
 #define PIN_H
 
 #include <QDialog>
+#include "mainwindow.h"
+#include "transactions.h"
+#include "mainmenu.h"
 
 namespace Ui {
 class pin;
@@ -17,10 +20,10 @@ public:
 
 private slots:
 
-    void button_clicked();
-    void cancel_clicked();
-    void clear_clicked();
-    void enter_clicked();
+    void on_button_clicked();
+    void on_cancel_clicked();
+    void on_clear_clicked();
+    void on_enter_clicked();
 
 private:
     Ui::pin *ui;
