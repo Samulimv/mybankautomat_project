@@ -41,3 +41,10 @@ win32: LIBS += -L$$PWD/rfidreader/build/debug/ -lrfidreader
 
 INCLUDEPATH += $$PWD/rfidreader
 DEPENDPATH += $$PWD/rfidreader
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/rfidreader/build/release/ -lrfidreader
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/rfidreader/build/debug/ -lrfidreader
+else:unix: LIBS += -L$$PWD/rfidreader/build/ -lrfidreader
+
+INCLUDEPATH += $$PWD/rfidreader
+DEPENDPATH += $$PWD/rfidreader

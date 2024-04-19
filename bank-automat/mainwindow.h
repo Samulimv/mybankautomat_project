@@ -26,14 +26,10 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void showPinDialog();
-    void sendDataToServer(const QJsonObject &data);
      QString returnCardNumber();
 
 private slots:
     void displayTagId(const QString &tagId);
-    //void fetchPasswordFromServer(const QString &tagId);
-    void handleNetworkReply(QNetworkReply* reply);
-    void handlePinVerified(bool success);
     void openPin();
 
 private:

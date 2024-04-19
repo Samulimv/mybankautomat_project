@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(reader, &RFIDReader::newTagRead, this, &MainWindow::displayTagId);
     // connect(reader, &Rfidreader::errorOccured, statusLabel, &QLabel::setText);
-    connect(networkManager, &QNetworkAccessManager::finished, this, &MainWindow::handleNetworkReply);
+
 
     if (!reader->connectToReader("COM3"))
     {
