@@ -28,7 +28,6 @@ void transactions::on_btnShowTrans_clicked()
             SLOT(transactionsSlot(QNetworkReply*)));
 
 
-
     reply = getManager->get(request);
 }
 

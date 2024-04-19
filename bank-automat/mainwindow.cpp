@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "pin.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QMessageBox>
@@ -12,17 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
     pinDialog(nullptr)
 {
     ui->setupUi(this);
-
-
-    connect(reader, &RFIDReader::newTagRead, this, &MainWindow::displayTagId);
-    // connect(reader, &Rfidreader::errorOccured, statusLabel, &QLabel::setText);
-    connect(networkManager, &QNetworkAccessManager::finished, this, &MainWindow::handleNetworkReply);
-
-    if (!reader->connectToReader("COM3"))
-    {
-
-        QMessageBox::warning(this, "Connection Error", "Could not connect to RFID reader");
-    }
 }
 
 MainWindow::~MainWindow()
@@ -55,10 +43,7 @@ void MainWindow::handlePinVerified(bool success)
         qDebug() << "PIN verification failed";
     }
 }
-void MainWindow::sendDataToServer(const QJsonObject &data)
-{
-    networkManager->post(request(), QJsonDocument(data).toJson());
-}
+
 
 void MainWindow::openPin() {
     if (!pinDialog) {

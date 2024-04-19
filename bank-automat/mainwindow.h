@@ -1,14 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "QLabel.h"
 #include <QMainWindow>
-#include <QSerialPort>
-#include <QtNetwork>
-#include <QNetworkAccessManager>
-#include <QJsonDocument>
-#include "pin.h"
-#include "rfidreader.h"
+#include <QApplication>
+#include "transactions.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,19 +12,16 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
-class RFIDReader;  // Forward declaration
-class pin;
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void showPinDialog();
     void sendDataToServer(const QJsonObject &data);
-    void request();
+
 
 
 private slots:
@@ -40,10 +33,5 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    RFIDReader * reader;
-    QLabel *statusLabel;
-    QNetworkAccessManager *networkManager;
-    pin * pinDialog;
-
 };
-#endif
+#endif // MAINWINDOW_H
