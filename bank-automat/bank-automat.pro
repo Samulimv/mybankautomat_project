@@ -1,5 +1,4 @@
 QT       += core gui
-QT       += sql
 QT       += network
 QT += serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -11,6 +10,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    environment.cpp \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
@@ -20,6 +20,7 @@ SOURCES += \
     transactions.cpp
 
 HEADERS += \
+    environment.h \
     mainmenu.h \
     mainwindow.h \
     muusumma.h \
@@ -40,7 +41,19 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+
+
+
+
+
 win32: LIBS += -L$$PWD/rfidreader/build/debug/ -lrfidreader
+
+INCLUDEPATH += $$PWD/rfidreader
+DEPENDPATH += $$PWD/rfidreader
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/rfidreader/build/release/ -lrfidreader
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/rfidreader/build/debug/ -lrfidreader
+else:unix: LIBS += -L$$PWD/rfidreader/build/ -lrfidreader
 
 INCLUDEPATH += $$PWD/rfidreader
 DEPENDPATH += $$PWD/rfidreader

@@ -4,7 +4,6 @@
 #include "mainmenu.h"
 
 #include <QApplication>
-#include <QtSql>
 #include <QTableView>
 
 
@@ -17,9 +16,7 @@ int main(int argc, char *argv[])
     mainmenu m;
 
      w.show();
-     //t.show();
-     //p.show();
-     //m.show();
+
 
     return a.exec();
 }
