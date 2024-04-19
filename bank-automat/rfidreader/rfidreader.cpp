@@ -1,3 +1,4 @@
+
 #include "rfidreader.h"
 #include <QDebug>
 

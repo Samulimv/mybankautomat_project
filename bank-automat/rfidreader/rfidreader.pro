@@ -1,6 +1,7 @@
 QT += core gui
 QT += serialport
-CONFIG += shared
+QT += network
+
 TEMPLATE = lib
 DEFINES += RFIDREADER_LIBRARY
 

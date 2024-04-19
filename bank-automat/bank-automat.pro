@@ -1,6 +1,6 @@
 QT       += core gui
 QT       += network
-QT       += serialport
+QT += serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -12,18 +12,27 @@ CONFIG += c++17
 SOURCES += \
     environment.cpp \
     main.cpp \
+    mainmenu.cpp \
     mainwindow.cpp \
+    muusumma.cpp \
+    otto.cpp \
     pin.cpp \
     transactions.cpp
 
 HEADERS += \
     environment.h \
+    mainmenu.h \
     mainwindow.h \
+    muusumma.h \
+    otto.h \
     pin.h \
     transactions.h
 
 FORMS += \
+    mainmenu.ui \
     mainwindow.ui \
+    muusumma.ui \
+    otto.ui \
     pin.ui \
     transactions.ui
 
