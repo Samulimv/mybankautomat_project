@@ -1,10 +1,7 @@
 #include "otto.h"
 #include "ui_otto.h"
 #include "muusumma.h"
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 otto::otto(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::otto)

@@ -41,14 +41,8 @@ void transactions::transactionsSlot(QNetworkReply *Treply)
 
 }
 
-
-
-
-
 void transactions::on_btnTakaisin_clicked()
 {
-
-
 
     QString site_url="http://localhost:3000/transactions";
     QNetworkRequest request((site_url));

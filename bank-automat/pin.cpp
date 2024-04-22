@@ -7,39 +7,48 @@
 #include <QMessageBox>
 #include "mainwindow.cpp"
 #include "mainmenu.h"
+
+void pin::returnCardNumber(const QString &card)
+{
+    cardNum = card;
+    qDebug() << "cardNum=" << cardNum;
+}
+
+
 pin::pin(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::pin)
 {
     ui->setupUi(this);
 
-    connect(ui->numero1, &QPushButton::clicked, this, &pin::on_button_clicked);
-    connect(ui->numero2, &QPushButton::clicked, this, &pin::on_button_clicked);
-    connect(ui->numero3, &QPushButton::clicked, this, &pin::on_button_clicked);
-    connect(ui->numero4, &QPushButton::clicked, this, &pin::on_button_clicked);
-    connect(ui->numero5, &QPushButton::clicked, this, &pin::on_button_clicked);
-    connect(ui->numero6, &QPushButton::clicked, this, &pin::on_button_clicked);
-    connect(ui->numero7, &QPushButton::clicked, this, &pin::on_button_clicked);
-    connect(ui->numero8, &QPushButton::clicked, this, &pin::on_button_clicked);
-    connect(ui->numero9, &QPushButton::clicked, this, &pin::on_button_clicked);
-    connect(ui->numero0, &QPushButton::clicked, this, &pin::on_button_clicked);
+    connect(ui->numero1, &QPushButton::clicked, this, &pin::button_clicked);
+    connect(ui->numero2, &QPushButton::clicked, this, &pin::button_clicked);
+    connect(ui->numero3, &QPushButton::clicked, this, &pin::button_clicked);
+    connect(ui->numero4, &QPushButton::clicked, this, &pin::button_clicked);
+    connect(ui->numero5, &QPushButton::clicked, this, &pin::button_clicked);
+    connect(ui->numero6, &QPushButton::clicked, this, &pin::button_clicked);
+    connect(ui->numero7, &QPushButton::clicked, this, &pin::button_clicked);
+    connect(ui->numero8, &QPushButton::clicked, this, &pin::button_clicked);
+    connect(ui->numero9, &QPushButton::clicked, this, &pin::button_clicked);
+    connect(ui->numero0, &QPushButton::clicked, this, &pin::button_clicked);
 
 
-    connect(ui->cancel, &QPushButton::clicked, this, &pin::on_cancel_clicked);
+    connect(ui->cancel, &QPushButton::clicked, this, &pin::cancel_clicked);
 
-    connect(ui->clear, &QPushButton::clicked, this, &pin::on_clear_clicked);
+    connect(ui->clear, &QPushButton::clicked, this, &pin::clear_clicked);
 
-    connect(ui->enter, &QPushButton::clicked, this, &pin::on_enter_clicked);
+    connect(ui->enter, &QPushButton::clicked, this, &pin::enter_clicked);
 
 }
 
 pin::~pin()
 {
     delete ui;
-    on_cancel_clicked();
+    cancel_clicked();
 }
 
-void pin::on_button_clicked()
+
+void pin::button_clicked()
 {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
 
@@ -50,29 +59,26 @@ void pin::on_button_clicked()
     ui->lineEdit->setEchoMode(QLineEdit::Password);
 }
 
-void pin::on_cancel_clicked()
+void pin::cancel_clicked()
 {
     // QApplication::quit(); // Sulkee kaikki sovellukset
     close(); //sulkee vain pin ikkunan
 }
 
-void pin::on_clear_clicked()
+void pin::clear_clicked()
 {
     ui->lineEdit->clear(); // Tyhjentää lineeditin
 }
 
-void pin::on_enter_clicked()
+void pin::enter_clicked()
 {
-    MainWindow s;
-    QString cardNumber= s.returnCardNumber();
-<<<<<<< HEAD
-    qDebug() << cardNumber;
-=======
-    qDebug()<<cardNumber;
->>>>>>> main
+
+
+    qDebug() << "cardNumber" << cardNum;
     QString pin=ui->lineEdit->text();
+    qDebug() << pin;
     QJsonObject jsonObj;
-    jsonObj.insert("cardNumber",cardNumber);
+    jsonObj.insert("cardNumber",cardNum);
     jsonObj.insert("pin",pin);
 
     QString site_url= environment::getBaseUrl()+"/login";
@@ -101,9 +107,6 @@ void pin::loginSlot(QNetworkReply *reply)
             mainmenu *objectMainMenu= new mainmenu(this);
             objectMainMenu->setWebToken(response_data);
             objectMainMenu->show();
-
-
-
 
 
         }
