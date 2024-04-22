@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="btnShowTrans">
+  <widget class="QPushButton" name="btnTakaisin">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -28,7 +28,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Näytä tilitapahtumat</string>
+    <string>Takaisin</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="textTransactions">

@@ -6,7 +6,6 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <QApplication>
-#include "transactions.h"
 #include "rfidreader.h"
 #include "pin.h"
 
@@ -24,7 +23,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void showPinDialog();
-     QString returnCardNumber();
+     QString returnCardNumber() const;
 
 
 private slots:

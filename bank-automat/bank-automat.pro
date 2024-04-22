@@ -46,14 +46,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 
-win32: LIBS += -L$$PWD/rfidreader/build/debug/ -lrfidreader
-
-INCLUDEPATH += $$PWD/rfidreader
-DEPENDPATH += $$PWD/rfidreader
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/rfidreader/build/release/ -lrfidreader
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/rfidreader/build/debug/ -lrfidreader
 else:unix: LIBS += -L$$PWD/rfidreader/build/ -lrfidreader
+
+
+
+win32: LIBS += -L$$PWD/rfidreader/build/debug/ -lrfidreader
 
 INCLUDEPATH += $$PWD/rfidreader
 DEPENDPATH += $$PWD/rfidreader

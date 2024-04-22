@@ -32,17 +32,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::displayTagId(const QString &tagId)
 {
-    QString cleanedTagId = tagId;
-    cleanedTagId.remove('-');
-
-    
 
 
-    openPin();
 }
 
-QString MainWindow::returnCardNumber()
+QString MainWindow::returnCardNumber()const
 {
+    QString cleanedTagId = "06000640D7";
     return cleanedTagId;
 }
 
