@@ -65,7 +65,11 @@ void pin::on_enter_clicked()
 {
     MainWindow s;
     QString cardNumber= s.returnCardNumber();
+<<<<<<< HEAD
     qDebug() << cardNumber;
+=======
+    qDebug()<<cardNumber;
+>>>>>>> main
     QString pin=ui->lineEdit->text();
     QJsonObject jsonObj;
     jsonObj.insert("cardNumber",cardNumber);
@@ -94,8 +98,12 @@ void pin::loginSlot(QNetworkReply *reply)
     else{
         if(response_data!="false"){
             //kirjautuminen onnistui
-            mainmenu m;
-            m.show();
+            mainmenu *objectMainMenu= new mainmenu(this);
+            objectMainMenu->setWebToken(response_data);
+            objectMainMenu->show();
+
+
+
 
 
         }
@@ -109,3 +117,4 @@ void pin::loginSlot(QNetworkReply *reply)
     reply->deleteLater();
     loginManager->deleteLater();
 }
+

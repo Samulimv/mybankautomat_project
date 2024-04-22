@@ -25,6 +25,18 @@ router.get('/:id',function(request, response){
     })
 });
 
+router.get('/getId/:cardNumber', function(request, response){
+    card.getByCardNumber(request.params.cardNumber, function(err, result){
+if(err){
+    response.send(err);
+}
+else {
+    response.json(result);
+}
+})
+});
+
+
 router.post('/',function(request, response){
     card.addCard(request.body, function(err, result){
         if(err){
