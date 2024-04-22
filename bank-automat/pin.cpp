@@ -65,6 +65,7 @@ void pin::on_enter_clicked()
 {
     MainWindow s;
     QString cardNumber= s.returnCardNumber();
+    qDebug() << cardNumber;
     QString pin=ui->lineEdit->text();
     QJsonObject jsonObj;
     jsonObj.insert("cardNumber",cardNumber);

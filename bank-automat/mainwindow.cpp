@@ -34,6 +34,11 @@ void MainWindow::displayTagId(const QString &tagId)
 {
     QString cleanedTagId = tagId;
     cleanedTagId.remove('-');
+     cleanedTagId.remove(("\\s"));
+     cleanedTagId.remove('>');
+    cleanedTagId = cleanedTagId.trimmed();
+   // QDebug
+    qDebug() << cleanedTagId;
 
     
 

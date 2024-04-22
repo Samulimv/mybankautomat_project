@@ -27,6 +27,7 @@ private slots:
 
 private:
     Ui::muusumma *ui;
+    muusumma * muusummaDialog;
 };
 
 #endif // MUUSUMMA_H
