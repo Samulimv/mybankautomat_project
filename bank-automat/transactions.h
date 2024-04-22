@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 
+
 namespace Ui {
 class transactions;
 }
@@ -17,18 +18,26 @@ class transactions : public QDialog
 public:
     explicit transactions(QWidget *parent = nullptr);
     ~transactions();
+    void setWebToken(QByteArray &newWebToken);
 
 private slots:
-    void transactionsSlot (QNetworkReply *reply);
 
-    void on_btnShowTrans_clicked();
+
+
+
+    void transactionsSlot(QNetworkReply *Treply);
+    void on_btnTakaisin_clicked();
 
 private:
     Ui::transactions *ui;
+    QNetworkAccessManager *TManager;
+    QByteArray tapahtumat_Data;
+    QNetworkReply *Treply;
+    QByteArray webToken;
 
-    QNetworkAccessManager *getManager;
-    QNetworkReply *reply;
-    QByteArray response_data;
+
+
+
 
 
 };

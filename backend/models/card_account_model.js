@@ -5,7 +5,7 @@ const card_account={
         return db.query("SELECT * FROM card_account", callback);
     },
     getOneCardAccount(id, callback){
-        return db.query("SELECT * FROM card_account WHERE id_card=?, id_account=?",[id],[id], callback);
+        return db.query("SELECT * FROM card_account WHERE id_card=?",[id], callback);
     },
     addCardAccount(newCardAccount,callback){
         return db.query("INSERT INTO card_account(id_card, id_account) VALUES(?,?)", [newCardAccount.id_card, newCardAccount.id_account], callback);

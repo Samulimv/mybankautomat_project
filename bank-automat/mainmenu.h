@@ -2,8 +2,10 @@
 #define MAINMENU_H
 
 #include <QDialog>
-#include "mainwindow.h"
-#include "transactions.h"
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+
 
 namespace Ui {
 class mainmenu;
@@ -17,6 +19,8 @@ public:
     explicit mainmenu(QWidget *parent = nullptr);
     ~mainmenu();
 
+    void setWebToken(const QByteArray &newWebToken);
+
 private slots:
     void on_tilinvalinta_clicked();
     void on_tapahtumat_clicked();
@@ -24,8 +28,14 @@ private slots:
     void on_saldo_clicked();
     void on_stopmenu_clicked();
 
+
 private:
     Ui::mainmenu *ui;
+    QNetworkAccessManager *Manager;
+    QNetworkReply *reply;
+    QByteArray webToken;
+
+
 };
 
 #endif // MAINMENU_H

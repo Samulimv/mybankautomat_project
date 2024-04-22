@@ -26,6 +26,7 @@ private slots:
     void on_enter_clicked();
     void loginSlot(QNetworkReply *reply);
 
+
 private:
     Ui::pin *ui;
     QNetworkAccessManager *loginManager;
