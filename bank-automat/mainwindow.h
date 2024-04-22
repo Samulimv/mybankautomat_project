@@ -2,8 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 #include <QApplication>
-#include "transactions.h"
 #include "rfidreader.h"
 #include "pin.h"
 
@@ -21,15 +23,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void showPinDialog();
-    void sendDataToServer(const QJsonObject &data);
-
+     QString returnCardNumber() const;
 
 
 private slots:
     void displayTagId(const QString &tagId);
-    //void fetchPasswordFromServer(const QString &tagId);
-  //  void handleNetworkReply(QNetworkReply* reply);
-   // void handlePinVerified(bool success);
     void openPin();
 
 private:
@@ -37,6 +35,7 @@ private:
 
     RFIDReader * reader;
     pin * pinDialog;
+    QString cleanedTagId;
 
 };
 #endif // MAINWINDOW_H

@@ -20,17 +20,18 @@ const card = {
       );
     });
   },
-
-  updateCard(id_card, updateData, callback) {
-    bcrypt.hash(updateData.pin, 10, (err, hashedPin) => {
-      if (err) {
-        return callback(err);
+  getByCardNumber(cardNumber, callback) {
+    
+    db.query('SELECT id_card FROM card WHERE cardNumber = ?', [cardNumber], (error, results) => {
+      if (error) {
+        return callback(error, null);
       }
-      return db.query(
-        'UPDATE card SET pin = ?, cardNumber = ? WHERE id_card = ?',
-        [hashedPin, updateData.cardNumber, id_card], 
-        callback
-      );
+      if (results && results.length > 0) {
+        const id = results[0].id_card;
+        return callback(null, id);
+      } else {
+        return callback(null, null);
+      }
     });
   },
 

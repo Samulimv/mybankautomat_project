@@ -2,11 +2,7 @@
 #define OTTO_H
 
 #include <QDialog>
-#include "mainwindow.h"
-#include "transactions.h"
-#include "pin.h"
-#include "mainmenu.h"
-#include "muusumma.h"
+
 
 namespace Ui {
 class otto;

@@ -3,8 +3,9 @@
 #include <QDebug>
 #include <QLineEdit>
 #include <QApplication>
-#include <ostream>
-#include <iostream>
+#include "environment.h"
+#include <QMessageBox>
+#include "mainwindow.cpp"
 #include "mainmenu.h"
 pin::pin(QWidget *parent)
     : QDialog(parent)
@@ -62,13 +63,56 @@ void pin::on_clear_clicked()
 
 void pin::on_enter_clicked()
 {
-    QString pin = ui->lineEdit->text(); // Hae pin-koodi lineeditistä
-    // Tässä voit toteuttaa tarvittavat toimenpiteet pin-koodin kanssa
-    qDebug() << "Syötetty pin-koodi:" << pin;
-    std::cout<<"pin oikein "<<std::endl;
-    this->close(); //sulkee vain otto ikkunan, mainmenu jää taustalle
-    mainmenu *mainmenuDialog = new mainmenu(this);
-    mainmenuDialog->exec(); //sulkee ja avaa uuden menun
+    MainWindow s;
+    QString cardNumber= s.returnCardNumber();
+    qDebug()<<cardNumber;
+    QString pin=ui->lineEdit->text();
+    QJsonObject jsonObj;
+    jsonObj.insert("cardNumber",cardNumber);
+    jsonObj.insert("pin",pin);
+
+    QString site_url= environment::getBaseUrl()+"/login";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    loginManager = new QNetworkAccessManager(this);
+    connect(loginManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
+
+    reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
+
 }
+void pin::loginSlot(QNetworkReply *reply)
+{
+    response_data=reply->readAll();
+    QMessageBox msgBox;
+    //qDebug()<<response_data;
+    if(response_data=="-4078" || response_data.length()==0){
+
+        msgBox.setText("Virhe tietoyhteydessä");
+        msgBox.exec();
+    }
+    else{
+        if(response_data!="false"){
+            //kirjautuminen onnistui
+            mainmenu *objectMainMenu= new mainmenu(this);
+            objectMainMenu->setWebToken(response_data);
+            objectMainMenu->show();
+
+
+
+
+
+        }
+        else{
+            msgBox.setText("Tunnus/salasana ei täsmää");
+            msgBox.exec();
+            //ui->textUsername->clear();
+            ui->lineEdit->clear();
+        }
+    }
+    reply->deleteLater();
+    loginManager->deleteLater();
+}
+
 
 //toimiasasasafasfdasfa

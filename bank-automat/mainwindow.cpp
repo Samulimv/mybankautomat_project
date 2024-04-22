@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
     {
 
     }
+
+
 }
 
 MainWindow::~MainWindow()
@@ -27,15 +29,19 @@ MainWindow::~MainWindow()
     delete pinDialog;
 }
 
+
 void MainWindow::displayTagId(const QString &tagId)
 {
-    QString cleanedTagId = tagId;
-    cleanedTagId.remove('-');
 
-    //fetchPasswordFromServer(cleanedTagId);
 
-    openPin();
 }
+
+QString MainWindow::returnCardNumber()const
+{
+    QString cleanedTagId = "06000640D7";
+    return cleanedTagId;
+}
+
 
 void MainWindow::openPin()
 {
@@ -49,4 +55,16 @@ void MainWindow::openPin()
         pinDialog->exec();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
