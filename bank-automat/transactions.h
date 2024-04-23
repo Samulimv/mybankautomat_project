@@ -19,6 +19,7 @@ public:
     explicit transactions(QWidget *parent = nullptr);
     ~transactions();
     void setWebToken(QByteArray &newWebToken);
+    void getTransactions();
 
 private slots:
 

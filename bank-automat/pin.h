@@ -15,15 +15,21 @@ class pin : public QDialog
     Q_OBJECT
 
 public:
+    void returnCardNumber(const QString &card);
+    QString getCardNumber()const;
+
+
     explicit pin(QWidget *parent = nullptr);
     ~pin();
 
+    void setCardNum(const QString &newCardNum);
+
 private slots:
 
-    void on_button_clicked();
-    void on_cancel_clicked();
-    void on_clear_clicked();
-    void on_enter_clicked();
+    void button_clicked();
+    void cancel_clicked();
+    void clear_clicked();
+    void enter_clicked();
     void loginSlot(QNetworkReply *reply);
 
 
@@ -32,6 +38,8 @@ private:
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     QByteArray response_data;
+    QString cardNum;
+
 
 };
 
