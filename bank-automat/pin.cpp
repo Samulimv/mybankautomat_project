@@ -121,3 +121,7 @@ void pin::loginSlot(QNetworkReply *reply)
     loginManager->deleteLater();
 }
 
+void pin::setCardNum(const QString &newCardNum)
+{
+    cardNum = newCardNum;
+}

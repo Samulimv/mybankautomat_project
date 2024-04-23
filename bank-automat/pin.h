@@ -22,6 +22,8 @@ public:
     explicit pin(QWidget *parent = nullptr);
     ~pin();
 
+    void setCardNum(const QString &newCardNum);
+
 private slots:
 
     void button_clicked();

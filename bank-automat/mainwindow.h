@@ -30,7 +30,7 @@ public:
 
 private slots:
     void displayTagId(const QString &tagId);
-    void openPin();
+    void openPin(QString);
 
 private:
     Ui::MainWindow *ui;

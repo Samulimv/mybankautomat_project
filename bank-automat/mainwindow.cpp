@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     reader(new RFIDReader(this)),
-  //  networkManager(new QNetworkAccessManager(this)),
+    //  networkManager(new QNetworkAccessManager(this)),
     pinDialog(nullptr)
 {
     ui->setupUi(this);
@@ -25,7 +25,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete reader;
-   // delete networkManager;
+    // delete networkManager;
     delete pinDialog;
 }
 
@@ -33,23 +33,25 @@ MainWindow::~MainWindow()
 void MainWindow::displayTagId(const QString &tagId)
 {
 
-     QString cleanedTagId = tagId;
-     cleanedTagId.remove('-');
-     cleanedTagId.remove(("\\s"));
-     cleanedTagId.remove('>');
-     cleanedTagId = cleanedTagId.trimmed();
-     pin * objectPin = new pin(this);
-     objectPin -> returnCardNumber(cleanedTagId);
-     qDebug() << "cleaned" << cleanedTagId;
-     openPin();
+    QString cleanedTagId = tagId;
+    cleanedTagId.remove('-');
+    cleanedTagId.remove(("\\s"));
+    cleanedTagId.remove('>');
+    cleanedTagId = cleanedTagId.trimmed();
+    pin * objectPin = new pin(this);
+   // objectPin->setCardNum(cleanedTagId);
+    //objectPin -> returnCardNumber(cleanedTagId);
+    qDebug() << "cleaned" << cleanedTagId;
+    openPin(cleanedTagId);
 
 }
 
-void MainWindow::openPin()
+void MainWindow::openPin(QString cardN)
 {
     if (!pinDialog)
     {
         pinDialog = new pin(this);
+        pinDialog->setCardNum(cardN);
         pinDialog->setModal(true);
     }
     if (!pinDialog->isVisible())
@@ -57,16 +59,4 @@ void MainWindow::openPin()
         pinDialog->exec();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
