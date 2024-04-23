@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 
 router.post('/', 
   function(request, response) {
+    console.log(request.body.pin); 
     if(request.body.cardNumber && request.body.pin){
       const user = request.body.cardNumber;
       const pass = request.body.pin;

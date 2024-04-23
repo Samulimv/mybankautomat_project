@@ -30,8 +30,8 @@ void transactions::transactionsSlot(QNetworkReply *Treply)
         QJsonObject json_obj = value.toObject();
         transact+=QString::number(json_obj["id_transactions"].toInt())+"                            ";
         transact+=QString::number(json_obj["id_account"].toInt())+"                          ";
-
-        transact+=QString::number(json_obj["amount"].toInt())+"      ";
+        transact+= json_obj["amount"].toString()+"             ";
+        //transact+=QString::number(json_obj["amount"].toInt())+"      ";
         transact+=json_obj["transactionType"].toString()+"               ";
         transact+=json_obj["transactionDate"].toString()+"\r";
 
@@ -41,14 +41,8 @@ void transactions::transactionsSlot(QNetworkReply *Treply)
 
 }
 
-
-
-
-
 void transactions::on_btnTakaisin_clicked()
 {
-
-
 
     QString site_url="http://localhost:3000/transactions";
     QNetworkRequest request((site_url));
@@ -68,5 +62,22 @@ void transactions::on_btnTakaisin_clicked()
 void transactions::setWebToken(QByteArray &newWebToken)
 {
     webToken= newWebToken;
+}
+
+void transactions::getTransactions()
+{
+    QString site_url="http://localhost:3000/transactions";
+    QNetworkRequest request((site_url));
+
+    QByteArray myToken="Bearer "+webToken;
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
+
+    TManager = new QNetworkAccessManager(this);
+
+    connect(TManager, SIGNAL(finished(QNetworkReply*)),this,
+            SLOT(transactionsSlot(QNetworkReply*)));
+
+
+    Treply = TManager->get(request);
 }
 
