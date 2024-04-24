@@ -17,6 +17,7 @@ SOURCES += \
     muusumma.cpp \
     otto.cpp \
     pin.cpp \
+    saldo.cpp \
     transactions.cpp
 
 HEADERS += \
@@ -26,6 +27,7 @@ HEADERS += \
     muusumma.h \
     otto.h \
     pin.h \
+    saldo.h \
     transactions.h
 
 FORMS += \
@@ -34,6 +36,7 @@ FORMS += \
     muusumma.ui \
     otto.ui \
     pin.ui \
+    saldo.ui \
     transactions.ui
 
 # Default rules for deployment.

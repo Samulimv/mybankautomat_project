@@ -3,6 +3,7 @@
 #include "transactions.h"
 #include "ui_transactions.h"
 #include "otto.h"
+#include "saldo.h"
 
 
 mainmenu::mainmenu(QWidget *parent)
@@ -39,15 +40,25 @@ void mainmenu::on_tapahtumat_clicked()
 
 void mainmenu::on_otto_clicked()
 {
+<<<<<<< HEAD
     otto *ottoObject =new otto(this);
     ottoObject->setWebToken(webToken);
     ottoObject->setAccountId(accountId);
     ottoObject->show();
+=======
+    this->close();
+    otto *ottoDialog = new otto(this);
+    ottoDialog->exec();
+
+>>>>>>> main
 }
 
 
 void mainmenu::on_saldo_clicked()
 {
+    this->close();
+    saldo *saldoDialog = new saldo(this);
+    saldoDialog->exec();
 
 }
 
