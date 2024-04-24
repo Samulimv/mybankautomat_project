@@ -8,7 +8,7 @@ namespace Ui {
 class otto;
 }
 
-class otto : public QDialog
+class otto :public QDialog
 {
     Q_OBJECT
 
@@ -29,6 +29,7 @@ private slots:
 
 private:
     Ui::otto *ui;
+        void debit_transfer();
 };
 
 #endif // OTTO_H

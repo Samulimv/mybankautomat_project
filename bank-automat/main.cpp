@@ -2,7 +2,6 @@
 #include "transactions.h"
 #include "pin.h"
 #include "mainmenu.h"
-
 #include <QApplication>
 #include <QTableView>
 
@@ -17,7 +16,7 @@ int main(int argc, char *argv[])
 
      t.show();
      w.show();
-
+     m.show();
 
     return a.exec();
 }
