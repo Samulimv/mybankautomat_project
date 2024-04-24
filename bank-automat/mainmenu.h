@@ -21,6 +21,9 @@ public:
 
     void setWebToken(const QByteArray &newWebToken);
 
+
+    void setAccountId(const QString &newAccountId);
+
 private slots:
     void on_tilinvalinta_clicked();
     void on_tapahtumat_clicked();
@@ -34,6 +37,7 @@ private:
     QNetworkAccessManager *Manager;
     QNetworkReply *reply;
     QByteArray webToken;
+    QString accountId;
 
 
 };

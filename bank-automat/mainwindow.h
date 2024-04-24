@@ -37,8 +37,9 @@ private:
 
     RFIDReader * reader;
     pin * pinDialog;
-    QString cleanedTagId;
     QString card;
+    QString cleanedTagId;
+
 
 };
 #endif // MAINWINDOW_H

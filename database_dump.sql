@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `bank` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `bank`;
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bank
 -- ------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `account` (
   PRIMARY KEY (`id_account`),
   KEY `user-account_idx` (`id_user`),
   CONSTRAINT `user-account` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'123',1.00,NULL),(2,'321',-37.00,NULL),(3,'4444',-5.00,2);
+INSERT INTO `account` VALUES (1,'123',1.00,NULL),(2,'321',-37.00,NULL),(3,'4444',-5.00,2),(4,'555',400.00,3);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +93,7 @@ CREATE TABLE `card_account` (
 
 LOCK TABLES `card_account` WRITE;
 /*!40000 ALTER TABLE `card_account` DISABLE KEYS */;
-INSERT INTO `card_account` VALUES (1,1),(2,2),(3,3);
+INSERT INTO `card_account` VALUES (1,1),(2,2),(3,3),(3,4);
 /*!40000 ALTER TABLE `card_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,4 +224,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-16 12:04:02
+-- Dump completed on 2024-04-24 14:12:42

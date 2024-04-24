@@ -16,6 +16,11 @@ public:
     explicit otto(QWidget *parent = nullptr);
     ~otto();
 
+    void setWebToken(const QByteArray &newWebToken);
+
+    void setAccountId(const QString &newAccountId);
+    void otto_clickHandler();
+
 private slots:
 
     void on_otto20_clicked();
@@ -29,7 +34,10 @@ private slots:
 
 private:
     Ui::otto *ui;
-        void debit_transfer();
+    QByteArray webToken;
+    QString accountId;
+    int maara;
+
 };
 
 #endif // OTTO_H
