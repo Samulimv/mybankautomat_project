@@ -29,6 +29,7 @@ void mainmenu::on_tapahtumat_clicked()
 {
     transactions *objectTransactions= new transactions(this);
     objectTransactions->setWebToken(webToken);
+    objectTransactions->getTransactions();
     objectTransactions->show();
 
 

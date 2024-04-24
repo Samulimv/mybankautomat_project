@@ -23,12 +23,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void showPinDialog();
-    QString returnCardNumber()const;
+
+
+
 
 
 private slots:
     void displayTagId(const QString &tagId);
-    void openPin();
+    void openPin(QString);
 
 private:
     Ui::MainWindow *ui;
@@ -37,6 +39,7 @@ private:
     pin * pinDialog;
     QString card;
     QString cleanedTagId;
+    QString card;
 
 };
 #endif // MAINWINDOW_H
