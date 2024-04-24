@@ -19,11 +19,12 @@ public:
     explicit transactions(QWidget *parent = nullptr);
     ~transactions();
     void setWebToken(QByteArray &newWebToken);
+
     void getTransactions();
 
+    void setAccountId(const QString &newAccountId);
+
 private slots:
-
-
 
 
     void transactionsSlot(QNetworkReply *Treply);
@@ -35,6 +36,7 @@ private:
     QByteArray tapahtumat_Data;
     QNetworkReply *Treply;
     QByteArray webToken;
+    QString accountId;
 
 
 

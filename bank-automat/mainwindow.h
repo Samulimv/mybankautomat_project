@@ -39,7 +39,7 @@ private:
     pin * pinDialog;
     QString card;
     QString cleanedTagId;
-    QString card;
+
 
 };
 #endif // MAINWINDOW_H

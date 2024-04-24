@@ -8,11 +8,7 @@
 #include "mainwindow.cpp"
 #include "mainmenu.h"
 
-void pin::returnCardNumber(const QString &card)
-{
-    cardNum = card;
-    qDebug() << "cardNum=" << cardNum;
-}
+
 
 
 pin::pin(QWidget *parent)
@@ -106,6 +102,8 @@ void pin::loginSlot(QNetworkReply *reply)
             //kirjautuminen onnistui
             mainmenu *objectMainMenu= new mainmenu(this);
             objectMainMenu->setWebToken(response_data);
+            accountId=getAccountId();
+            objectMainMenu->setAccountId(accountId);
             objectMainMenu->show();
 
 
@@ -119,6 +117,41 @@ void pin::loginSlot(QNetworkReply *reply)
     }
     reply->deleteLater();
     loginManager->deleteLater();
+}
+
+QString pin::getAccountId()
+{
+    QString card= cardNum;
+    QJsonObject cardObj;
+    cardObj.insert("cardNumber", card);
+    
+    QString site_url= environment::getBaseUrl()+"/card/getId/"+card;
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    
+    loginManager = new QNetworkAccessManager(this);
+
+    
+    reply = loginManager->post(request, QJsonDocument(cardObj).toJson());
+    QString cardId= reply->readAll();
+
+    QJsonObject aObj;
+    aObj.insert("id_card", cardId);
+
+    QString newsite_url= environment::getBaseUrl()+"/card_account/"+cardId;
+    QNetworkRequest newrequest((newsite_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    accManager = new QNetworkAccessManager(this);
+
+
+    reply = accManager->post(newrequest, QJsonDocument(aObj).toJson());
+    accountId=reply->readAll();
+
+    return accountId;
+
+    
+    
 }
 
 void pin::setCardNum(const QString &newCardNum)
