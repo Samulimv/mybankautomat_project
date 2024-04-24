@@ -23,7 +23,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void showPinDialog();
-     QString returnCardNumber() const;
+    QString returnCardNumber()const;
 
 
 private slots:
@@ -35,6 +35,7 @@ private:
 
     RFIDReader * reader;
     pin * pinDialog;
+    QString card;
     QString cleanedTagId;
 
 };
