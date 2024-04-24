@@ -16,6 +16,7 @@ otto::~otto()
 
 void otto::on_otto20_clicked()
 {
+    void debit_transfer();
 
 }
 
