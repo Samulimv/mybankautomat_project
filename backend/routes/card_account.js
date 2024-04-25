@@ -19,7 +19,7 @@ router.get("/:id", function(request, response){
             response.send(err);
         }
         else {
-            response.json(result[0]);
+            response.json(result);
         }
     })
 });
