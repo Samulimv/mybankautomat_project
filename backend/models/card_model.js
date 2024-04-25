@@ -22,17 +22,8 @@ const card = {
   },
   getByCardNumber(cardNumber, callback) {
     
-    db.query('select id_account from card_account inner join card on card_account.id_card=card.id_cardwhere cardNumber= ?', [cardNumber], (error, results) => {
-      if (error) {
-        return callback(error, null);
-      }
-      if (results && results.length > 0) {
-        const id = results[0].id_card;
-        return callback(null, id);
-      } else {
-        return callback(null, null);
-      }
-    });
+     return db.query('select id_account from card_account inner join card on card_account.id_card=card.id_cardwhere cardNumber= ?', [cardNumber], callback);
+    
   },
 
   getOneCard(id_card, callback) {

@@ -37,10 +37,10 @@ private slots:
 
 private:
     Ui::mainmenu *ui;
-    QNetworkAccessManager *Manager;
-    QNetworkReply *reply;
+    QNetworkAccessManager *mainManager;
+    QNetworkReply *mainReply;
     QByteArray webToken;
-    QByteArray response_data;
+    QByteArray main_data;
     QString cardNum;
     int credOrDeb;
     QString accountId;

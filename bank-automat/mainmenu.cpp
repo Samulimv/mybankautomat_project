@@ -43,17 +43,7 @@ void mainmenu::on_tapahtumat_clicked()
 
 void mainmenu::on_otto_clicked()
 {
-    QString site_url=environment::getBaseUrl()+"/card/getId"+cardNum;
-    QNetworkRequest request((site_url));
-    //WEBTOKEN ALKU
-    QByteArray myToken="Bearer "+webToken;
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-    //WEBTOKEN LOPPU
-    Manager = new QNetworkAccessManager(this);
 
-    connect(Manager, SIGNAL(finished (QNetworkReply*)), this, SLOT(idAccountSlot(QNetworkReply*)));
-
-    reply = Manager->get(request);
 
     otto *ottoObject =new otto(this);
     ottoObject->setWebToken(webToken);
@@ -79,33 +69,36 @@ void mainmenu::on_stopmenu_clicked()
 }
 void mainmenu:: idAccount()
 {
-    QString site_url=environment::getBaseUrl()+"/card/getId"+cardNum;
+    QString site_url="http://localhost:3000/card/getId/"+cardNum;
     QNetworkRequest request((site_url));
+    qDebug()<<cardNum;
     //WEBTOKEN ALKU
     QByteArray myToken="Bearer "+webToken;
     request.setRawHeader(QByteArray("Authorization"),(myToken));
     //WEBTOKEN LOPPU
-    Manager = new QNetworkAccessManager(this);
+    mainManager = new QNetworkAccessManager(this);
 
-    connect(Manager, SIGNAL(finished (QNetworkReply*)), this, SLOT(idAccountSlot(QNetworkReply*)));
+    connect(mainManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(idAccountSlot(QNetworkReply*)));
 
-    reply = Manager->get(request);
+    mainReply = mainManager->get(request);
 
 }
 
-void mainmenu::idAccountSlot(QNetworkReply *)
+void mainmenu::idAccountSlot(QNetworkReply *mainReply)
 {
-    response_data=reply->readAll();
-    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    main_data=mainReply->readAll();
+    QJsonDocument json_doc = QJsonDocument::fromJson(main_data);
     QJsonArray json_array = json_doc.array();
+    qDebug()<<json_array;
     int credOrDeb=json_array.size();
-    QString accountId=json_array[0].toString();
-    QString scndAccountId=json_array[1].toString();
+    QString accountId=json_array.at(0).toString();
+    QString scndAccountId=json_array.at(1).toString();
     qDebug()<<accountId;
     qDebug()<<credOrDeb;
+    qDebug()<<scndAccountId;
 
-    reply->deleteLater();
-    Manager->deleteLater();
+    mainReply->deleteLater();
+    mainManager->deleteLater();
 
 
 
