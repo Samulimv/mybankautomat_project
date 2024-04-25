@@ -20,16 +20,19 @@ public:
     ~mainmenu();
 
     void setWebToken(const QByteArray &newWebToken);
+    void setCardNum(const QString &newCardNum);
 
 
-    void setAccountId(const QString &newAccountId);
 
+    void idAccount();
 private slots:
     void on_tilinvalinta_clicked();
     void on_tapahtumat_clicked();
     void on_otto_clicked();
     void on_saldo_clicked();
     void on_stopmenu_clicked();
+    void idAccountSlot(QNetworkReply*);
+
 
 
 private:
@@ -37,8 +40,11 @@ private:
     QNetworkAccessManager *Manager;
     QNetworkReply *reply;
     QByteArray webToken;
+    QByteArray response_data;
+    QString cardNum;
+    int credOrDeb;
     QString accountId;
-
+    QString scndAccountId;
 
 };
 

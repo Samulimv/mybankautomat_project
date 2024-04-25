@@ -21,7 +21,7 @@ bool RFIDReader::connectToReader(const QString &portName)
         serial->close();
     }
 
-    serial->setPortName("COM3");
+    serial->setPortName("COM6");
     serial->setBaudRate(QSerialPort::Baud9600);
     serial->setDataBits(QSerialPort::Data8);
     serial->setParity(QSerialPort::NoParity);

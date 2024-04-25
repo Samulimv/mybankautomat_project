@@ -38,9 +38,6 @@ void MainWindow::displayTagId(const QString &tagId)
     cleanedTagId.remove(("\\s"));
     cleanedTagId.remove('>');
     cleanedTagId = cleanedTagId.trimmed();
-    pin * objectPin = new pin(this);
-   // objectPin->setCardNum(cleanedTagId);
-    //objectPin -> returnCardNumber(cleanedTagId);
     qDebug() << "cleaned" << cleanedTagId;
     openPin(cleanedTagId);
 

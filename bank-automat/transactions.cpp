@@ -44,19 +44,6 @@ void transactions::transactionsSlot(QNetworkReply *Treply)
 void transactions::on_btnTakaisin_clicked()
 {
 
-    QString site_url="http://localhost:3000/transactions/"+accountId;
-    QNetworkRequest request((site_url));
-
-    QByteArray myToken="Bearer "+webToken;
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-
-    TManager = new QNetworkAccessManager(this);
-
-    connect(TManager, SIGNAL(finished(QNetworkReply*)),this,
-            SLOT(transactionsSlot(QNetworkReply*)));
-
-
-    Treply = TManager->get(request);
 }
 
 void transactions::setAccountId(const QString &newAccountId)
@@ -73,6 +60,7 @@ void transactions::getTransactions()
 {
     QString site_url="http://localhost:3000/transactions/"+accountId;
     QNetworkRequest request((site_url));
+    qDebug()<<accountId;
 
     QByteArray myToken="Bearer "+webToken;
     request.setRawHeader(QByteArray("Authorization"),(myToken));

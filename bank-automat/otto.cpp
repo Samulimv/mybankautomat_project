@@ -1,6 +1,7 @@
 #include "otto.h"
 #include "ui_otto.h"
 #include "muusumma.h"
+#include "environment.h"
 
 otto::otto(QWidget *parent)
     : QDialog(parent)
@@ -78,9 +79,16 @@ void otto::on_alkuun_clicked()
     mainmenuDialog->exec();
 }
 
-void otto::setAccountId(const QString &newAccountId)
+void otto::ottoSlot(QNetworkReply *reply)
+{
+    reply->deleteLater();
+    Manager->deleteLater();
+}
+
+void otto::setAccountIds(const QString &newAccountId,const QString &scndnewAccountId)
 {
     accountId = newAccountId;
+    scndAccountId = scndnewAccountId;
 }
 
 void otto::setWebToken(const QByteArray &newWebToken)
@@ -90,7 +98,31 @@ void otto::setWebToken(const QByteArray &newWebToken)
 
 void otto::otto_clickHandler()
 {
+    QString accountId;
+    int amount= maara;
+    QString transType="nosto";
 
+    QJsonObject jsonObj;
+    jsonObj.insert("id_account", accountId);
+    jsonObj.insert("amount ", amount);
+    jsonObj.insert("TransactionType", transType);
+
+    QString site_url=environment::getBaseUrl()+"/debit";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    Manager = new QNetworkAccessManager(this);
+    connect(Manager, SIGNAL(finished (QNetworkReply*)), this, SLOT(ottoSlot(QNetworkReply*)));
+
+    reply = Manager->post(request, QJsonDocument(jsonObj).toJson());
+
+
+
+}
+
+void otto::setCredOrDeb(const int &newCredOrDeb)
+{
+    credOrDeb=newCredOrDeb;
 
 }
 

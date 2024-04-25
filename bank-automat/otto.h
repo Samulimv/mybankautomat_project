@@ -2,6 +2,9 @@
 #define OTTO_H
 
 #include <QDialog>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 
 namespace Ui {
@@ -18,8 +21,9 @@ public:
 
     void setWebToken(const QByteArray &newWebToken);
 
-    void setAccountId(const QString &newAccountId);
+    void setAccountIds(const QString &newAccountId,const QString &newscndAccountId);
     void otto_clickHandler();
+    void setCredOrDeb(const int &newCredOrDeb );
 
 private slots:
 
@@ -31,12 +35,17 @@ private slots:
     void on_otto240_clicked();
     void on_muusumma_clicked();
     void on_alkuun_clicked();
+    void ottoSlot(QNetworkReply *reply);
 
 private:
     Ui::otto *ui;
+    QNetworkAccessManager *Manager;
+    QNetworkReply *reply;
     QByteArray webToken;
     QString accountId;
+    QString scndAccountId;
     int maara;
+    int credOrDeb;
 
 };
 

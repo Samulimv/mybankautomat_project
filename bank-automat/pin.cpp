@@ -82,7 +82,7 @@ void pin::enter_clicked()
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
     loginManager = new QNetworkAccessManager(this);
-    connect(loginManager, SIGNAL(finished (QNetworkReply)), this, SLOT(loginSlot(QNetworkReply*)));
+    connect(loginManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
 
     reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
 
@@ -102,9 +102,8 @@ void pin::loginSlot(QNetworkReply *reply)
             //kirjautuminen onnistui
             mainmenu *objectMainMenu= new mainmenu(this);
             objectMainMenu->setWebToken(response_data);
-            getCardid();
-            getAccountId();
-            objectMainMenu->setAccountId(accountId);
+            objectMainMenu->setCardNum(cardNum);
+            objectMainMenu->idAccount();
             objectMainMenu->show();
 
 
@@ -122,48 +121,10 @@ void pin::loginSlot(QNetworkReply *reply)
 
 
 
-void pin::getCardid()
-{
-    QString card= cardNum;
-    QString site_url= environment::getBaseUrl()+"/card/getId/"+card;
-    QNetworkRequest request(site_url);
-    QByteArray myToken ="Bearer "+response_data;
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-
-    cardManager = new QNetworkAccessManager(this);
-    QEventLoop loop;
-    connect(cardreply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-    loop.exec();
-
-    cardreply = cardManager->get(request);
-
-}
 
 
 
-void pin::getAccountId()
-{
-    QString CardId= cardreply->readAll();
 
-
-
-    QString newsite_url= environment::getBaseUrl()+"/card_account/"+CardId;
-    QNetworkRequest newrequest((newsite_url));
-    newrequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    accManager = new QNetworkAccessManager(this);
-    QEventLoop loop;
-    connect(accreply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-    loop.exec();
-
-    accreply = accManager->get(newrequest);
-    accountId=reply->readAll();
-
-
-
-    
-    
-}
 
 void pin::setCardNum(const QString &newCardNum)
 {
