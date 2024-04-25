@@ -1,4 +1,5 @@
 backend/node_modules/
 bank-automat/build/
 bank-automat/*.user
-bank-automat/*.user.8739d7c
+bank-automat/rfidreader/*.user
+bank-automat/rfidreader/*.user.8739d7c
