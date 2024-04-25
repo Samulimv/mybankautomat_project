@@ -40,17 +40,12 @@ void mainmenu::on_tapahtumat_clicked()
 
 void mainmenu::on_otto_clicked()
 {
-<<<<<<< HEAD
+
     otto *ottoObject =new otto(this);
     ottoObject->setWebToken(webToken);
     ottoObject->setAccountId(accountId);
     ottoObject->show();
-=======
-    this->close();
-    otto *ottoDialog = new otto(this);
-    ottoDialog->exec();
 
->>>>>>> main
 }
 
 
@@ -73,10 +68,7 @@ void mainmenu::setAccountId(const QString &newAccountId)
     accountId = newAccountId;
 }
 
-void mainmenu::setCard(const QString &newCard)
-{
-    Card = newCard;
-}
+
 void mainmenu::setWebToken(const QByteArray &newWebToken)
 {
     webToken=newWebToken;

@@ -23,7 +23,8 @@ public:
 
     void setCardNum(const QString &newCardNum);
 
-    QString getAccountId();
+    void getAccountId();
+    void getCardid();
 private slots:
 
     void button_clicked();
@@ -34,12 +35,15 @@ private slots:
 
 
 
+
 private:
     Ui::pin *ui;
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
     QNetworkAccessManager *accManager;
     QNetworkReply *accreply;
+    QNetworkAccessManager *cardManager;
+    QNetworkReply *cardreply;
     QByteArray response_data;
     QString accountId;
     QString cardNum;
