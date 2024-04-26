@@ -46,7 +46,7 @@ void transactions::on_btnTakaisin_clicked()
 
 }
 
-void transactions::setAccountId(const QString &newAccountId)
+void transactions::setAccountId(const int &newAccountId)
 {
     accountId = newAccountId;
 }

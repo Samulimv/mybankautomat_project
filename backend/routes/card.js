@@ -26,12 +26,12 @@ router.get('/:id',function(request, response){
 });
 
 router.get('/getId/:cardNumber', function(request, response){
-    card.getByCardNumber(request.params.cardNumber, function(err, result){
+    card.getByCardNumber(request.params.cardNumber, function(err, dbResult){
 if(err){
     response.send(err);
 }
 else {
-    response.json(result);
+    response.json(dbResult);
 }
 })
 });

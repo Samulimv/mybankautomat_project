@@ -47,7 +47,7 @@ void mainmenu::on_otto_clicked()
 
     otto *ottoObject =new otto(this);
     ottoObject->setWebToken(webToken);
-    ottoObject->setAccountIds(accountId,scndAccountId);
+    ottoObject->setAccountIds(accountId);
     ottoObject->setCredOrDeb(credOrDeb);
     ottoObject->show();
 
@@ -90,9 +90,9 @@ void mainmenu::idAccountSlot(QNetworkReply *mainReply)
     QJsonDocument json_doc = QJsonDocument::fromJson(main_data);
     QJsonArray json_array = json_doc.array();
     qDebug()<<json_array;
-    int credOrDeb=json_array.size();
-    QString accountId=json_array.at(0).toString();
-    QString scndAccountId=json_array.at(1).toString();
+     credOrDeb=json_array.size();
+     accountId=json_array.at(0)["id_account"].toInt();
+     scndAccountId=json_array.at(1)["id_account"].toInt();
     qDebug()<<accountId;
     qDebug()<<credOrDeb;
     qDebug()<<scndAccountId;

@@ -22,7 +22,7 @@ const card = {
   },
   getByCardNumber(cardNumber, callback) {
     
-     return db.query('select id_account from card_account inner join card on card_account.id_card=card.id_cardwhere cardNumber= ?', [cardNumber], callback);
+     return db.query('select id_account from card_account inner join card on card_account.id_card=card.id_card where cardNumber= ?', [cardNumber], callback);
     
   },
 

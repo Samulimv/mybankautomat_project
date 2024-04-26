@@ -43,8 +43,8 @@ private:
     QByteArray main_data;
     QString cardNum;
     int credOrDeb;
-    QString accountId;
-    QString scndAccountId;
+    int accountId;
+    int scndAccountId;
 
 };
 

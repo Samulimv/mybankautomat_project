@@ -21,7 +21,7 @@ public:
 
     void setWebToken(const QByteArray &newWebToken);
 
-    void setAccountIds(const QString &newAccountId,const QString &newscndAccountId);
+    void setAccountIds(const int &newAccountId);
     void otto_clickHandler();
     void setCredOrDeb(const int &newCredOrDeb );
 
@@ -39,11 +39,12 @@ private slots:
 
 private:
     Ui::otto *ui;
-    QNetworkAccessManager *Manager;
-    QNetworkReply *reply;
+    QNetworkAccessManager *ottoManager;
+    QNetworkReply *ottoReply;
+    int response_data;
     QByteArray webToken;
-    QString accountId;
-    QString scndAccountId;
+    int accountId;
+    int scndAccountId;
     int maara;
     int credOrDeb;
 
