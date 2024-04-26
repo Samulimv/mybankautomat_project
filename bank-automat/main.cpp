@@ -15,7 +15,8 @@ int main(int argc, char *argv[])
     mainmenu m;
 
 
-     w.show();
+    // w.show();
+    m.show();
 
 
     return a.exec();
