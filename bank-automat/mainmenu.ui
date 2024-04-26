@@ -17,7 +17,10 @@
    <string>Dialog</string>
   </property>
   <property name="autoFillBackground">
-   <bool>true</bool>
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 177, 255, 255), stop:1 rgba(255, 255, 255, 255));</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
@@ -49,7 +52,10 @@
         </font>
        </property>
        <property name="autoFillBackground">
-        <bool>true</bool>
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">selection-background-color: rgb(85, 255, 255);</string>
        </property>
        <property name="text">
         <string>SALDO</string>
@@ -66,7 +72,7 @@
         </font>
        </property>
        <property name="autoFillBackground">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="text">
         <string>TILIN VALINTA</string>
@@ -83,7 +89,7 @@
         </font>
        </property>
        <property name="autoFillBackground">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="text">
         <string>TAPAHTUMAT</string>
@@ -100,7 +106,7 @@
         </font>
        </property>
        <property name="autoFillBackground">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="text">
         <string>OTTO</string>
@@ -130,7 +136,11 @@
       </font>
      </property>
      <property name="autoFillBackground">
-      <bool>true</bool>
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">selection-background-color: rgb(255, 0, 0);
+selection-background-color: rgb(85, 170, 255);</string>
      </property>
      <property name="text">
       <string>STOP</string>

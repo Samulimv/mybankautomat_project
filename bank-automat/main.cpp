@@ -4,6 +4,7 @@
 #include "mainmenu.h"
 #include <QApplication>
 #include <QTableView>
+#include "tilinvalinta.h"
 
 
 int main(int argc, char *argv[])
@@ -13,9 +14,13 @@ int main(int argc, char *argv[])
     transactions t;
     pin p;
     mainmenu m;
+    tilinvalinta l;
+
+    l.show();
 
 
-     w.show();
+    // w.show();
+    m.show();
 
 
     return a.exec();
