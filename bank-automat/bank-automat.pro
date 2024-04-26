@@ -18,6 +18,7 @@ SOURCES += \
     otto.cpp \
     pin.cpp \
     saldo.cpp \
+    tilinvalinta.cpp \
     transactions.cpp
 
 HEADERS += \
@@ -28,6 +29,7 @@ HEADERS += \
     otto.h \
     pin.h \
     saldo.h \
+    tilinvalinta.h \
     transactions.h
 
 FORMS += \
@@ -37,6 +39,7 @@ FORMS += \
     otto.ui \
     pin.ui \
     saldo.ui \
+    tilinvalinta.ui \
     transactions.ui
 
 # Default rules for deployment.
