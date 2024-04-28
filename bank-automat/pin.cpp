@@ -94,12 +94,14 @@ void pin::loginSlot(QNetworkReply *reply)
     //qDebug()<<response_data;
     if(response_data=="-4078" || response_data.length()==0){
 
-        msgBox.setText("Virhe tietoyhteydessä");
-        msgBox.exec();
+        ui->messageLabel->setText("Virhe tietoyhteydessä");
+        ui->lineEdit->clear();
+
     }
     else{
         if(response_data!="false"){
             //kirjautuminen onnistui
+            this->close();
 
             mainmenu *objectMainMenu= new mainmenu(this);
             objectMainMenu->setWebToken(response_data);
@@ -110,9 +112,8 @@ void pin::loginSlot(QNetworkReply *reply)
 
         }
         else{
-            msgBox.setText("Tunnus/salasana ei täsmää");
-            msgBox.exec();
-            //ui->textUsername->clear();
+
+            ui->messageLabel->setText("Kortin numero ja salasana eivät täsmää");
             ui->lineEdit->clear();
         }
     }

@@ -107,7 +107,7 @@ selection-background-color: rgb(85, 170, 255);</string>
         <bool>false</bool>
        </property>
        <property name="text">
-        <string>TILIN VALINTA</string>
+        <string>VAIHDA TILIÄ</string>
        </property>
       </widget>
      </item>
