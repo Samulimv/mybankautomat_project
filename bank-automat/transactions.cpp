@@ -1,5 +1,6 @@
 #include "transactions.h"
 #include "ui_transactions.h"
+#include "mainmenu.h"
 
 
 transactions::transactions(QWidget *parent)
@@ -24,42 +25,31 @@ void transactions::transactionsSlot(QNetworkReply *Treply)
     QJsonDocument json_doc = QJsonDocument::fromJson(tapahtumat_Data);
     QJsonArray json_array = json_doc.array();
     QString transact;
-    transact="id_transaction | id_account | maara | tapahtuma | tilitapahtuman aika \r";
+    transact="maara | tapahtuma | tilitapahtuman aika \r";
 
     foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
-        transact+=QString::number(json_obj["id_transactions"].toInt())+"                            ";
-        transact+=QString::number(json_obj["id_account"].toInt())+"                          ";
-        transact+= json_obj["amount"].toString()+"             ";
-        //transact+=QString::number(json_obj["amount"].toInt())+"      ";
-        transact+=json_obj["transactionType"].toString()+"               ";
+        // transact+=QString::number(json_obj["id_account"].toInt())+"                          ";
+        transact+= json_obj["amount"].toString()+"        ";
+        transact+=json_obj["transactionType"].toString()+"        ";
         transact+=json_obj["transactionDate"].toString()+"\r";
 
 
     }
     ui->textTransactions->setText(transact);
 
+
 }
 
 void transactions::on_btnTakaisin_clicked()
 {
-
-    QString site_url="http://localhost:3000/transactions/"+accountId;
-    QNetworkRequest request((site_url));
-
-    QByteArray myToken="Bearer "+webToken;
-    request.setRawHeader(QByteArray("Authorization"),(myToken));
-
-    TManager = new QNetworkAccessManager(this);
-
-    connect(TManager, SIGNAL(finished(QNetworkReply*)),this,
-            SLOT(transactionsSlot(QNetworkReply*)));
+    this->close();
 
 
-    Treply = TManager->get(request);
+
 }
 
-void transactions::setAccountId(const QString &newAccountId)
+void transactions::setAccountId(const int &newAccountId)
 {
     accountId = newAccountId;
 }
@@ -71,8 +61,10 @@ void transactions::setWebToken(QByteArray &newWebToken)
 
 void transactions::getTransactions()
 {
-    QString site_url="http://localhost:3000/transactions/"+accountId;
+    QString acc=QString::number(accountId);
+    QString site_url="http://localhost:3000/transactions/"+acc;
     QNetworkRequest request((site_url));
+    qDebug()<<accountId;
 
     QByteArray myToken="Bearer "+webToken;
     request.setRawHeader(QByteArray("Authorization"),(myToken));

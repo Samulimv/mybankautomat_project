@@ -6,9 +6,18 @@ const account={
  
     },
     getById: function(id, callback){
-        return db.query('SELECT * FROM account WHERE id_account=?', [id], callback);
+        return db.query('SELECT id_user FROM account WHERE id_account=?', [id], callback);
    
     },
+    getByUserId: function(id, callback){
+        return db.query('SELECT accountNumber FROM account WHERE id_user=?', [id], callback);
+   
+    },
+    getBalanceById:function(id, callback){
+        return db.query('SELECT balance FROM account WHERE id_account=?', [id], callback);
+   
+    },
+
     add: function(account, callback){
         return db.query('INSERT INTO account (accountNumber,balance,id_user) values(?,?,?)', [account.accountNumber,account.balance,account.id_user], callback);
 

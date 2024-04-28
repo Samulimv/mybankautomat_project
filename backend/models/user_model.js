@@ -5,7 +5,7 @@ const user = {
     return db.query('select * from user', callback);
   },
   getById: function(id, callback) {
-    return db.query('select * from user where id_user=?', [id], callback);
+    return db.query('select fname from user where id_user=?', [id], callback);
   },
   add: function(user, callback) {
     return db.query(

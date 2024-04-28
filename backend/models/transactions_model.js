@@ -5,7 +5,7 @@ const transactions = {
     return db.query('select id_account, amount, transactionType, date_format(transactionDate, "%d.%m.%Y:%h.%i.%s") as transactionDate from transactions', callback);
   },
   getById: function(id, callback) {
-    return db.query('select * from transactions where id_transaction=?', [id], callback);
+    return db.query('select id_account, amount, transactionType, date_format(transactionDate, "%d.%m.%Y:%h.%i.%s") as transactionDate from transactions where id_account=?', [id], callback);
 
   },
 

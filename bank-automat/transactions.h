@@ -22,7 +22,7 @@ public:
 
     void getTransactions();
 
-    void setAccountId(const QString &newAccountId);
+    void setAccountId(const int &newAccountId);
 
 private slots:
 
@@ -36,7 +36,7 @@ private:
     QByteArray tapahtumat_Data;
     QNetworkReply *Treply;
     QByteArray webToken;
-    QString accountId;
+    int accountId;
 
 
 
