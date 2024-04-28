@@ -29,7 +29,7 @@ pin::pin(QWidget *parent)
     connect(ui->numero0, &QPushButton::clicked, this, &pin::button_clicked);
 
 
-    connect(ui->cancel, &QPushButton::clicked, this, &pin::cancel_clicked);
+
 
     connect(ui->clear, &QPushButton::clicked, this, &pin::clear_clicked);
 
@@ -40,7 +40,7 @@ pin::pin(QWidget *parent)
 pin::~pin()
 {
     delete ui;
-    cancel_clicked();
+
 }
 
 
@@ -55,11 +55,7 @@ void pin::button_clicked()
     ui->lineEdit->setEchoMode(QLineEdit::Password);
 }
 
-void pin::cancel_clicked()
-{
-    // QApplication::quit(); // Sulkee kaikki sovellukset
-    close(); //sulkee vain pin ikkunan
-}
+
 
 void pin::clear_clicked()
 {
@@ -90,7 +86,7 @@ void pin::enter_clicked()
 void pin::loginSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
-    QMessageBox msgBox;
+
     //qDebug()<<response_data;
     if(response_data=="-4078" || response_data.length()==0){
 
