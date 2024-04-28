@@ -33,7 +33,6 @@ private slots:
     void on_otto90_clicked();
     void on_otto140_clicked();
     void on_otto240_clicked();
-    void on_muusumma_clicked();
     void on_alkuun_clicked();
     void ottoSlot(QNetworkReply *reply);
 

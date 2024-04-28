@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QMessageBox>
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -25,10 +26,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete reader;
-    // delete networkManager;
+
     delete pinDialog;
 }
-
 
 void MainWindow::displayTagId(const QString &tagId)
 {
@@ -45,16 +45,14 @@ void MainWindow::displayTagId(const QString &tagId)
 
 void MainWindow::openPin(QString cardN)
 {
-    if (!pinDialog)
-    {
 
+
+        this->close();
         pinDialog = new pin(this);
         pinDialog->setCardNum(cardN);
         pinDialog->setModal(true);
-    }
-    if (!pinDialog->isVisible())
-    {
-        pinDialog->exec();
-    }
+        pinDialog->show();
+
+
 }
 

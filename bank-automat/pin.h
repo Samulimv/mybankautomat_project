@@ -28,7 +28,6 @@ public:
 private slots:
 
     void button_clicked();
-    void cancel_clicked();
     void clear_clicked();
     void enter_clicked();
     void loginSlot(QNetworkReply *reply);
