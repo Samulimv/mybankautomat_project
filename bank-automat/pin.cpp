@@ -100,6 +100,7 @@ void pin::loginSlot(QNetworkReply *reply)
     else{
         if(response_data!="false"){
             //kirjautuminen onnistui
+
             mainmenu *objectMainMenu= new mainmenu(this);
             objectMainMenu->setWebToken(response_data);
             objectMainMenu->setCardNum(cardNum);

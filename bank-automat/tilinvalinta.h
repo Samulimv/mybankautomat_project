@@ -15,15 +15,22 @@ public:
     explicit tilinvalinta(QWidget *parent = nullptr);
     ~tilinvalinta();
 
+    void setAccountIds(const int &newAccountId, const int &scndNewAccountId);
+    void setWebToken(const QByteArray &newWebToken);
+    void setCredOrDeb(const int &newCredOrDeb);
 private slots:
-    void on_takaisin_clicked();
-
     void on_debit_clicked();
 
     void on_credit_clicked();
 
+    void on_takaisin_clicked();
+
 private:
     Ui::tilinvalinta *ui;
+    int accountId;
+    int scndAccountId;
+    int credOrDeb;
+    QByteArray webToken;
 };
 
 #endif // TILINVALINTA_H

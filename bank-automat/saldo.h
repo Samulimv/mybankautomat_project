@@ -19,17 +19,20 @@ public:
     explicit saldo(QWidget *parent = nullptr);
     ~saldo();
     void setWebToken(const QByteArray &newWebToken);
+    void setIdAccount(const int &newIdAccount);
     void getSaldo();
 
 private slots:
 
-    void handleSaldoReply(QNetworkReply *reply);
-    void on_lopeta_clicked(int id_account);
+    void SaldoSlot(QNetworkReply *reply);
+    void on_lopeta_clicked();
 
 private:
     Ui::saldo *ui;
     QNetworkAccessManager *TManager;
+    QNetworkReply *reply;
     QByteArray webToken;
+    int idAccount;
 };
 
 #endif

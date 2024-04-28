@@ -18,43 +18,46 @@ void saldo::setWebToken(const QByteArray &newWebToken) {
     webToken = newWebToken;
 }
 
+void saldo::setIdAccount(const int &newIdAccount)
+{
+    idAccount=newIdAccount;
+}
+
 void saldo::getSaldo() {
 
-    QString site_url ="http://localhost:3000/balance/%1";
+    QString acc=QString::number(idAccount);
+    QString site_url ="http://localhost:3000/account/balance/"+acc;
     QNetworkRequest request(site_url);
 
-    QByteArray myToken = "Bearer " + webToken;
-    request.setRawHeader("Authorization", myToken);
+    QByteArray myToken ="Bearer "+webToken;
+    request.setRawHeader(QByteArray("Authorization"),(myToken));
+    TManager = new QNetworkAccessManager(this);
+    connect(TManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(SaldoSlot(QNetworkReply*)));
 
-    connect(TManager, &QNetworkAccessManager::finished, this, &saldo::handleSaldoReply);
-
-    TManager->get(request);
+    reply=TManager->get(request);
 
 }
 
 
-void saldo::on_lopeta_clicked(int id_account) {
+void saldo::on_lopeta_clicked() {
 
-    QString site_url = QString("http://localhost:3000/balance/%1").arg(id_account);
-    QNetworkRequest request(site_url);
-    QByteArray myToken = "Bearer " + webToken;
-    request.setRawHeader("Authorization", myToken);
-    connect(TManager, &QNetworkAccessManager::finished, this, &saldo::handleSaldoReply);
+    this->close();
 
-    TManager->get(request);
 }
 
-void saldo::handleSaldoReply(QNetworkReply *reply) {
+void saldo::SaldoSlot(QNetworkReply *reply) {
     QByteArray response_data = reply->readAll();
-    reply->deleteLater();
 
-    if (reply->error() == QNetworkReply::NoError) {
-        // Oletetaan, että JSON-vastauksen muoto on { "saldo": value }
-        QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-        QJsonObject json_obj = json_doc.object();
-        double saldo = json_obj["saldo"].toDouble();
-        ui->tilinsaldo->setText(QString::number(saldo, 'f', 2));
-    } else {
-        ui->tilinsaldo->setText("Virhe saldon haussa");
-    }
+    QJsonDocument jsonDoc=QJsonDocument::fromJson(response_data);
+    QJsonArray json_array=jsonDoc.array();
+
+    QString balance= json_array.at(0)["balance"].toString();
+    qDebug()<<balance;
+
+
+    ui->tilinsaldo->setText(balance);
+    reply->deleteLater();
+    qDebug()<<response_data;
+
+
 }

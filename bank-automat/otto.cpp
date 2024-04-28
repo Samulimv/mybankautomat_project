@@ -67,7 +67,7 @@ void otto::on_otto240_clicked()
 
 void otto::on_muusumma_clicked()
 {
-    this->close();
+
     muusumma *muusummaDialog = new muusumma(this);
     muusummaDialog->exec();
 }
@@ -75,7 +75,7 @@ void otto::on_muusumma_clicked()
 
 void otto::on_alkuun_clicked()
 {
-    this->close();
+
     mainmenu *mainmenuDialog = new mainmenu(this);
     mainmenuDialog->exec();
 }
@@ -89,17 +89,18 @@ void otto::ottoSlot(QNetworkReply *ottoReply)
     QMessageBox msgBox;
     if(affectedRows==0)
     {
-
+        this->close();
         msgBox.setText("Olet köyhä");
         msgBox.exec();
-        this->close();
+
 
     }
     else{
         QString num= QString::number(maara);
+        this->close();
         msgBox.setText("Nostit: "+num+" euroa");
         msgBox.exec();
-        this->close();
+
     }
     ottoReply->deleteLater();
     ottoManager->deleteLater();
@@ -109,7 +110,7 @@ void otto::ottoSlot(QNetworkReply *ottoReply)
 void otto::setAccountIds(const int &newAccountId)
 {
     accountId = newAccountId;
-    scndAccountId = scndnewAccountId;
+
 }
 
 void otto::setWebToken(const QByteArray &newWebToken)
@@ -119,15 +120,18 @@ void otto::setWebToken(const QByteArray &newWebToken)
 
 void otto::otto_clickHandler()
 {
-
     double amount= maara;
     QString transType="nosto";
 
+    if(credOrDeb==1)
+    {
+
     QJsonObject jsonObj;
+
     jsonObj.insert("id_account", accountId);
     jsonObj.insert("amount", amount);
     jsonObj.insert("transactionType", transType);
-
+    qDebug()<<jsonObj;
     QString site_url=environment::getBaseUrl()+"/debit";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -140,6 +144,34 @@ void otto::otto_clickHandler()
     connect(ottoManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(ottoSlot(QNetworkReply*)));
 
     ottoReply = ottoManager->post(request, QJsonDocument(jsonObj).toJson());
+
+
+    }
+    else{
+
+
+    QJsonObject jsonObj;
+        jsonObj.insert("id_account", accountId);
+        jsonObj.insert("credit_limit",3000);
+        jsonObj.insert("amount", amount);
+        jsonObj.insert("transactionType", transType);
+        QString site_url=environment::getBaseUrl()+"/credit";
+        QNetworkRequest request((site_url));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+        QByteArray myToken="Bearer "+webToken;
+        request.setRawHeader(QByteArray("Authorization"),(myToken));
+
+
+
+        ottoManager = new QNetworkAccessManager(this);
+        connect(ottoManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(ottoSlot(QNetworkReply*)));
+
+        ottoReply = ottoManager->post(request, QJsonDocument(jsonObj).toJson());
+    }
+
+
+
+
 
 
 

@@ -9,7 +9,7 @@ function(request, response) {
     if (err) {
       response.json(err);
     } else {
-      response.json(request.affectedRows);
+      response.json(dbResult.affectedRows);
     }
   });
 });

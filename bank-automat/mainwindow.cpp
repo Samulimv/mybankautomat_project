@@ -47,6 +47,7 @@ void MainWindow::openPin(QString cardN)
 {
     if (!pinDialog)
     {
+
         pinDialog = new pin(this);
         pinDialog->setCardNum(cardN);
         pinDialog->setModal(true);

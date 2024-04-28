@@ -15,12 +15,34 @@ router.get('/',function(request, response){
 
 router.get('/:id',
 function(request, response){
-    account.getById(request.params.id, function(err, result){
+    account.getById(request.params.id, function(err, dbResult){
         if(err){
             response.json(err);
         }
         else{
-            response.json(result);
+            response.json(dbResult[0].id_user);
+        }
+    })
+});
+router.get('/user/:id',
+function(request, response){
+    account.getByUserId(request.params.id, function(err, dbresult){
+        if(err){
+            response.json(err);
+        }
+        else{
+            response.json(dbresult);
+        }
+    })
+});
+router.get('/balance/:id',
+function(request, response){
+    account.getBalanceById(request.params.id, function(err, dbresult){
+        if(err){
+            response.json(err);
+        }
+        else{
+            response.json(dbresult);
         }
     })
 });

@@ -19,6 +19,7 @@ SOURCES += \
     pin.cpp \
     saldo.cpp \
     tilinvalinta.cpp \
+    tilit.cpp \
     transactions.cpp
 
 HEADERS += \
@@ -30,6 +31,7 @@ HEADERS += \
     pin.h \
     saldo.h \
     tilinvalinta.h \
+    tilit.h \
     transactions.h
 
 FORMS += \
@@ -40,6 +42,7 @@ FORMS += \
     pin.ui \
     saldo.ui \
     tilinvalinta.ui \
+    tilit.ui \
     transactions.ui
 
 # Default rules for deployment.
