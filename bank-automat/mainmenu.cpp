@@ -7,7 +7,6 @@
 #include "environment.h"
 #include "QDebug"
 #include "tilinvalinta.h"
-#include "tilit.h"
 #include "mainwindow.h"
 #include "QMessageBox"
 

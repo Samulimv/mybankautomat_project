@@ -1,6 +1,5 @@
 #include "otto.h"
 #include "ui_otto.h"
-#include "muusumma.h"
 #include "environment.h"
 #include "QMessageBox"
 
@@ -65,19 +64,10 @@ void otto::on_otto240_clicked()
 
 
 
-void otto::on_muusumma_clicked()
-{
-
-    muusumma *muusummaDialog = new muusumma(this);
-    muusummaDialog->exec();
-}
-
-
 void otto::on_alkuun_clicked()
 {
+    this->close();
 
-    mainmenu *mainmenuDialog = new mainmenu(this);
-    mainmenuDialog->exec();
 }
 
 void otto::ottoSlot(QNetworkReply *ottoReply)

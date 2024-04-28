@@ -14,35 +14,29 @@ SOURCES += \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
-    muusumma.cpp \
     otto.cpp \
     pin.cpp \
     saldo.cpp \
     tilinvalinta.cpp \
-    tilit.cpp \
     transactions.cpp
 
 HEADERS += \
     environment.h \
     mainmenu.h \
     mainwindow.h \
-    muusumma.h \
     otto.h \
     pin.h \
     saldo.h \
     tilinvalinta.h \
-    tilit.h \
     transactions.h
 
 FORMS += \
     mainmenu.ui \
     mainwindow.ui \
-    muusumma.ui \
     otto.ui \
     pin.ui \
     saldo.ui \
     tilinvalinta.ui \
-    tilit.ui \
     transactions.ui
 
 # Default rules for deployment.
