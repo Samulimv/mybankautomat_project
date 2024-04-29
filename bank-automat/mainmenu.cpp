@@ -45,9 +45,7 @@ void mainmenu::on_tilinvalinta_clicked()
 
     }
     else{
-        QMessageBox msgBox;
-        msgBox.setText("Sinulla on vain yksi tili");
-        msgBox.exec();
+        ui->label_3->setText("Sinulla on vain yksi tili");
     }
 
 
@@ -85,7 +83,7 @@ void mainmenu::on_tapahtumat_clicked()
 
     qDebug()<<tili;
 
-
+    ui->label_3->clear();
 
 
 }
@@ -111,6 +109,7 @@ void mainmenu::on_otto_clicked()
     ottoObject->setCredOrDeb(credOrDeb);
     ottoObject->show();
     }
+     ui->label_3->clear();
 }
 
 
@@ -132,6 +131,7 @@ void mainmenu::on_saldo_clicked()
         saldoDialog->getSaldo();
         saldoDialog->exec();
     }
+     ui->label_3->clear();
 
 }
 
